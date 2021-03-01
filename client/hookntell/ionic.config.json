@@ -1,7 +1,0 @@
-{
-  "name": "hookntell",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
