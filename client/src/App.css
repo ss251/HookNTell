@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "LeagueGothic";
+  src: local("LeagueGothic"), url(./fonts/league-gothic.condensed-regular.ttf),
+    format("truetype");
+}
+
+nav .brand-logo.right {
+  right: 0.5rem;
+  padding: 0;
+}
+
+nav .brand-logo {
+  color: #0f6a79;
+}
