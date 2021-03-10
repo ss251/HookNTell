@@ -5,36 +5,37 @@ import "../../App.css";
 
 const Navbar = () => {
   return (
-    <div className="navbar-fixed">
-      <nav className="z-depth-0">
-        <div className="nav-wrapper white">
-          <Link to="/">
+    <div>
+      <nav className="no-shadows">
+        <div className="nav-wrapper">
+          <Link to="/" className="brand-logo">
             <img className="logo" alt="hookntell logo" src={logo}></img>
           </Link>
-          <Link
-            to="/"
-            style={{
-              fontFamily: "Roboto",
-              fontSize: 25,
-              fontWeight: "medium",
-            }}
-            className="col s5 brand-logo center-left black-text"
-          >
-            HOOK AND TELL
-          </Link>
-          <Link
-            to="/about"
-            style={{
-              fontFamily: "roboto",
-              fontSize: 25,
-              fontWeight: "medium",
-            }}
-            className="col s5 brand-logo right black-text"
-          >
-            About
-          </Link>
-          <Link to="/resources">Resources</Link>
-          <Link to="/map">Map</Link>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+            <i class="material-icons">menu</i>
+          </a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li>
+              <a className="nav-about" href="about">
+                About
+              </a>
+            </li>
+            <li>
+              <a className="nav-resources" href="resources">
+                Resources
+              </a>
+            </li>
+            <li>
+              <a className="nav-map" href="map">
+                Map
+              </a>
+            </li>
+            <li>
+              <a className="nav-profile" href="dashboard">
+                Profile
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>
