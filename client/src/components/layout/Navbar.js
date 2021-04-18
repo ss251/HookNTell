@@ -1,79 +1,78 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
 import logo from "../../img/Logo.png";
 import logo2 from "../../img/Logo2.png";
-import "../../App.css";
 
-const Navbar = () => {
+const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+  const authLinks = (
+    <ul>
+      {/*<li>
+        <Link to="/profiles">Fisherpeople</Link>
+      </li>*/}
+      <li>
+        <Link to="/posts">Posts</Link>
+      </li>
+      <li>
+        <Link to="/dashboard">Profile</Link>
+      </li>
+      <li>
+        <a onClick={logout} href="#!">
+          Logout
+        </a>
+      </li>
+    </ul>
+  );
+
+  const guestLinks = (
+    <ul>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/about">Resources</Link>
+      </li>
+      <li>
+        <Link to="/about">Map</Link>
+      </li>
+      {/*<li>
+        <Link to="/profiles">Fisherpeople</Link>
+      </li>*/}
+
+      <li>
+        <Link to="/login">Sign In</Link>
+      </li>
+    </ul>
+  );
+
   return (
-    <div>
-      <nav className="no-shadows">
-        <div className="nav-wrapper">
-          <Link to="/" className="brand-logo">
-            <img
-              className="logo"
-              alt="hookntell logo"
-              src={logo}
-              onMouseOver={(e) => (e.currentTarget.src = logo2)}
-              onMouseOut={(e) => (e.currentTarget.src = logo)}
-              onClick={(e) => (e.currentTarget.src = logo2)}
-            />
-          </Link>
-          <a href="#" data-target="mobile-nav" className="sidenav-trigger">
-            <i
-              className="material-icons"
-              // onMouseOver={(e) => (e.target.style.color = "#F99E75")}
-              // onClick={(e) => (e.target.style.color = "#F99E75")}
-            >
-              menu
-            </i>
-          </a>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li>
-              <a
-                className="nav-about"
-                href="about"
-                // onMouseOver={(e) => (e.target.style.color = "#F99E75")}
-                // onClick={(e) => (e.target.style.color = "#F99E75")}
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                className="nav-resources"
-                href="resources"
-                // onMouseOver={(e) => (e.target.style.color = "#F99E75")}
-                // onClick={(e) => (e.target.style.color = "#F99E75")}
-              >
-                Resources
-              </a>
-            </li>
-            <li>
-              <a
-                className="nav-map"
-                href="map"
-                // onMouseOver={(e) => (e.target.style.color = "#F99E75")}
-                // onClick={(e) => (e.target.style.color = "#F99E75")}
-              >
-                Map
-              </a>
-            </li>
-            <li>
-              <a
-                className="nav-profile"
-                href="dashboard"
-                // onMouseOver={(e) => (e.target.style.color = "#F99E75")}
-                // onClick={(e) => (e.target.style.color = "#F99E75")}
-              >
-                Profile
-              </a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
+    <nav className="navbar bg-light">
+      <h1>
+        <Link to="/">
+          <img
+            className="logo"
+            alt="hookntell logo"
+            src={logo}
+            onMouseOver={(e) => (e.currentTarget.src = logo2)}
+            onMouseOut={(e) => (e.currentTarget.src = logo)}
+            onClick={(e) => (e.currentTarget.src = logo2)}
+          />
+        </Link>
+      </h1>
+      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
+    </nav>
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

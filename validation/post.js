@@ -5,7 +5,7 @@ module.exports = validatePostInput = (data) => {
   let errors = {};
 
   let { title, body } = data;
-  // Converting empty fields to empty string as validator function works only with strings
+  // Converting empty fields to empty string to use validator
   title = !isEmpty(title) ? title : "";
   body = !isEmpty(body) ? body : "";
 

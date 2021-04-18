@@ -1,52 +1,39 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import img from "../../img/landingimg.png";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-const Landing = () => {
+const Landing = ({ isAuthenticated }) => {
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
-    <div style={{ height: "75vh" }} className="container valign-wrapper">
-      <div className="row">
-        <div className="col s12 center-align">
-          {/* <h4>
-            <b>Build</b> a login/auth app with the{" "}
-            <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-            scratch
-          </h4>
-          <p className="flow-text grey-text text-darken-1">
-            Create a (minimal) full-stack app with user authentication via
-            passport and JWTs
-          </p> */}
-          <br />
-          <div className="col s6">
-            <Link
-              to="/register"
-              style={{
-                width: "140px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-              }}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Register
+    <section className="landing">
+      <div className="no-overlay">
+        <div className="landing-inner">
+          <h1 className="x-large">Welcome to your Fisherpeople community</h1>
+
+          <div className="buttons">
+            <Link to="/register" className="btn btn-primary">
+              Sign Up
             </Link>
-          </div>
-          <div className="col s6">
-            <Link
-              to="/login"
-              style={{
-                width: "140px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-              }}
-              className="btn btn-large btn-flat waves-effect white black-text"
-            >
-              Log In
+            <Link to="/login" className="btn btn-light">
+              Login
             </Link>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Landing;
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps)(Landing);

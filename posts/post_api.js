@@ -67,13 +67,13 @@ exports.createPost = function (req, res, next) {
     time: time,
   });
 
-  // Save the post
+  // Save post
   post.save(function (err, post) {
     // callback function
     if (err) {
       return next(err);
     }
-    res.json(post); // return the created post
+    res.json(post); // return created post
   });
 };
 
@@ -93,21 +93,21 @@ exports.fetchPost = function (req, res, next) {
       if (err) {
         console.log(err);
         return res.status(422).json({
-          message: "Error! Could not retrieve the post with the given post ID.",
+          message: "Error! Could not retrieve post with given post ID.",
         });
       }
       if (!post) {
         return res.status(404).json({
-          message: "Error! The post with the given ID is not exist.",
+          message: "Error! Post with given ID does not exist.",
         });
       }
-      res.json(post); // return the single blog post
+      res.json(post); // return single blog post
     }
   );
 };
 
 /**
- * Check if current post can be updated or deleted by the authenticated user: The author can only make change to his/her own posts
+ * Check if current post can be updated or deleted by authenticated user: Author can only make changes to their own posts
  *
  * @param req
  * @param res
@@ -117,7 +117,7 @@ exports.allowUpdateOrDelete = function (req, res, next) {
   // Require auth
   const user = req.user;
 
-  // Find the post by post ID
+  // Find post by post ID
   Post.findById(
     {
       _id: req.params.id,
@@ -126,21 +126,21 @@ exports.allowUpdateOrDelete = function (req, res, next) {
       if (err) {
         console.log(err);
         return res.status(422).json({
-          message: "Error! Could not retrieve the post with the given post ID.",
+          message: "Error! Could not retrieve post with given post ID.",
         });
       }
 
-      // Check if the post exist
+      // Check if post exist
       if (!post) {
         return res.status(404).json({
-          message: "Error! The post with the given ID is not exist.",
+          message: "Error! Post with given ID does not exist.",
         });
       }
 
       console.log(user._id);
       console.log(post.authorId);
 
-      // Check if the user ID is equal to the author ID
+      // Check if user ID equal to author ID
       if (!user._id.equals(post.authorId)) {
         return res.send({ allowChange: false });
       }
@@ -160,7 +160,7 @@ exports.updatePost = function (req, res, next) {
   // Require auth
   const user = req.user;
 
-  // Find the post by post ID
+  // Find post by post ID
   Post.findById(
     {
       _id: req.params.id,
@@ -169,23 +169,23 @@ exports.updatePost = function (req, res, next) {
       if (err) {
         console.log(err);
         return res.status(422).json({
-          message: "Error! Could not retrieve the post with the given post ID.",
+          message: "Error! Could not retrieve post with given post ID.",
         });
       }
 
-      // Check if the post exist
+      // Check if post exist
       if (!post) {
         return res.status(404).json({
-          message: "Error! The post with the given ID is not exist.",
+          message: "Error! Post with given ID does not exist.",
         });
       }
 
-      // Make sure the user ID is equal to the author ID (Cause only the author can edit the post)
+      // Make sure user ID is equal to author ID (only author can edit their post)
       // console.log(user._id);
       // console.log(post.authorId);
       if (!user._id.equals(post.authorId)) {
         return res.status(422).json({
-          message: "Error! You have no authority to modify this post.",
+          message: "Error! Unauthorized access to modify post.",
         });
       }
 
@@ -213,7 +213,7 @@ exports.updatePost = function (req, res, next) {
         if (err) {
           return next(err);
         }
-        res.json(post); // return the updated post
+        res.json(post); // return updated post
       });
     }
   );
@@ -229,14 +229,14 @@ exports.updatePost = function (req, res, next) {
 exports.deletePost = function (req, res, next) {
   // Require auth
 
-  // Delete the post
+  // Delete post
   Post.findByIdAndRemove(req.params.id, function (err, post) {
     if (err) {
       return next(err);
     }
     if (!post) {
       return res.status(422).json({
-        message: "Error! The post with the given ID is not exist.",
+        message: "Error! Post with given ID does not exist.",
       });
     }
 
@@ -249,7 +249,7 @@ exports.deletePost = function (req, res, next) {
 
     // Return a success message
     res.json({
-      message: "The post has been deleted successfully!",
+      message: "Post deleted successfully!",
     });
   });
 };
@@ -326,13 +326,13 @@ exports.createComment = function (req, res, next) {
     time: Date.now(),
   });
 
-  // Save the comment
+  // Save comment
   comment.save(function (err, comment) {
     // callback function
     if (err) {
       return next(err);
     }
-    res.json(comment); // return the created comment
+    res.json(comment); // return created comment
   });
 };
 

@@ -1,62 +1,44 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import Input from "../form/Input";
-import Textarea from "../form/Textarea";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addPost } from '../../actions/post';
 
-const PostForm = ({ post, onChange, onBlur, loading, onSubmit }) => {
-  const { title, body, errors } = post;
+const PostForm = ({ addPost }) => {
+  const [text, setText] = useState('');
+
   return (
-    <Container>
-      <Row>
-        <Col className="mx-auto">
-          <Form noValidate onSubmit={onSubmit} className="p-sm-3 p-xs-1">
-            <Input
-              name="title"
-              type="text"
-              placeholder="Enter Post Title"
-              value={title}
-              onChange={onChange}
-              onBlur={onBlur}
-              text={{
-                module: "post",
-                label: "Title",
-                error: errors.title,
-              }}
-            />
-            <Textarea
-              name="body"
-              placeholder="Write your post here..."
-              value={body}
-              onChange={onChange}
-              onBlur={onBlur}
-              text={{
-                module: "post",
-                label: "Description",
-                error: errors.body,
-              }}
-            />
-            <Button
-              variant="outline-info"
-              type="submit"
-              disabled={loading}
-              className="mt-3"
-            >
-              Submit
-            </Button>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
+    <div className='post-form'>
+      <div className='bg-primary p'>
+        <h3>Say Something...</h3>
+      </div>
+      <form
+        className='form my-1'
+        onSubmit={e => {
+          e.preventDefault();
+          addPost({ text });
+          setText('');
+        }}
+      >
+        <textarea
+          name='text'
+          cols='30'
+          rows='5'
+          placeholder='Create a post'
+          value={text}
+          onChange={e => setText(e.target.value)}
+          required
+        />
+        <input type='submit' className='btn btn-dark my-1' value='Submit' />
+      </form>
+    </div>
   );
 };
 
 PostForm.propTypes = {
-  post: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-  onBlur: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  addPost: PropTypes.func.isRequired
 };
 
-export default PostForm;
+export default connect(
+  null,
+  { addPost }
+)(PostForm);
