@@ -7,6 +7,7 @@ import formatDate from "../../utils/formatDate";
 const Catch = ({ catches, deleteCatch }) => {
   const report = catches.map((fish) => (
     <tr key={fish._id}>
+      <td>{fish.areacode}</td>
       <td>{fish.species}</td>
       <td>{formatDate(fish.date)}</td>
       <td className="hide-sm">{fish.location}</td>
@@ -30,6 +31,7 @@ const Catch = ({ catches, deleteCatch }) => {
       <table className="table">
         <thead>
           <tr>
+            <th>Area Code</th>
             <th>Species</th>
             <th className="hide-sm">Date</th>
             <th className="hide-sm">Location</th>

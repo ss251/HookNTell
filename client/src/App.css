@@ -246,6 +246,10 @@ img {
 }
 
 /* Forms */
+.login-pop {
+  width: 50%;
+}
+
 .form .form-group {
   margin: 1.2rem 0;
 }
@@ -373,7 +377,7 @@ button {
   font-family: Montserrat;
   font-weight: 600;
   position: relative;
-  bottom: 3vh;
+  bottom: 60px;
 }
 
 .landing-fisher {
@@ -383,7 +387,12 @@ button {
   font-family: "League Gothic";
   font-weight: 200;
   position: relative;
-  bottom: 3vh;
+  bottom: 55px;
+}
+
+.signup-landing {
+  position: relative;
+  bottom: 35px;
 }
 
 /* Profiles Page */

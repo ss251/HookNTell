@@ -3,9 +3,19 @@ import PropTypes from "prop-types";
 import formatDate from "../../utils/formatDate";
 
 const ProfileCatches = ({
-  catches: { species, date, location, weight, length, habitat, notes },
+  catches: {
+    areacode,
+    species,
+    date,
+    location,
+    weight,
+    length,
+    habitat,
+    notes,
+  },
 }) => (
   <div>
+    <h3 className="text-dark">{areacode}</h3>
     <h3 className="text-dark">{species}</h3>
     <p>{formatDate(date)}</p>
     <p>

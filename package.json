@@ -37,6 +37,7 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react-bootstrap": "^1.5.2",
+    "react-modal": "^3.13.1",
     "react-redux": "^7.2.2",
     "redux-devtools-extension": "^2.13.9",
     "validator": "^13.5.2"

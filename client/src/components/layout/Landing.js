@@ -17,7 +17,7 @@ const Landing = ({ isAuthenticated }) => {
           <h2 className="landing-welcome">COMMUNITY</h2>
 
           <div className="buttons">
-            <Link to="/register" className="btn btn-primary">
+            <Link to="/register" className="btn btn-primary signup-landing">
               Sign Up
             </Link>
           </div>
