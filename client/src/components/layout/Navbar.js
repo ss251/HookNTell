@@ -32,9 +32,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         <Link to="/about">About</Link>
       </li>
       <li>
-        <Link to="/about">Resources</Link>
-      </li>
-      <li>
         <Link to="/about">Map</Link>
       </li>
       {/*<li>
@@ -42,7 +39,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       </li>*/}
 
       <li>
-        <Link to="/login">Sign In</Link>
+        <Link className="signin-nav" to="/login">
+          Sign In
+        </Link>
       </li>
     </ul>
   );

@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addCatches } from "../../actions/profile";
+import emailjs from "emailjs-com";
 
 const AddCatch = ({ addCatches, history }) => {
   const [formData, setFormData] = useState({
+    areacode: "",
     species: "",
     date: "",
     location: "",
@@ -15,7 +17,36 @@ const AddCatch = ({ addCatches, history }) => {
     notes: "",
   });
 
-  const { species, date, location, weight, length, habitat, notes } = formData;
+  const {
+    areacode,
+    species,
+    date,
+    location,
+    weight,
+    length,
+    habitat,
+    notes,
+  } = formData;
+
+  function sendEmail(e) {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_b00boyd",
+        "template_bywhxvl",
+        e.target,
+        "user_gPcJ9HVRFRhjQZCHQnnZr"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  }
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,9 +59,20 @@ const AddCatch = ({ addCatches, history }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
+          sendEmail(e);
           addCatches(formData, history);
         }}
       >
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="* Area Code"
+            name="areacode"
+            value={areacode}
+            onChange={onChange}
+            required
+          />
+        </div>
         <div className="form-group">
           <input
             type="text"
@@ -63,7 +105,7 @@ const AddCatch = ({ addCatches, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Weight"
+            placeholder="* Weight (lbs)"
             name="weight"
             value={weight}
             onChange={onChange}
@@ -72,7 +114,7 @@ const AddCatch = ({ addCatches, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Length"
+            placeholder="* Length (in)"
             name="length"
             value={length}
             onChange={onChange}
@@ -81,7 +123,7 @@ const AddCatch = ({ addCatches, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="* Habitat"
+            placeholder="* Habitat (Clip Type)"
             name="habitat"
             value={habitat}
             onChange={onChange}

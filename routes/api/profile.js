@@ -150,6 +150,7 @@ router.delete("/", auth, async (req, res) => {
 router.put(
   "/catch",
   auth,
+  check("areacode", "Area Code is required").notEmpty(),
   check("species", "Species is required").notEmpty(),
   check("location", "Location is required").notEmpty(),
   check("weight", "Weight is required").notEmpty(),

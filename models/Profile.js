@@ -13,6 +13,10 @@ const ProfileSchema = new mongoose.Schema({
   },
   catches: [
     {
+      areacode: {
+        type: String,
+        required: true,
+      },
       species: {
         type: String,
         required: true,

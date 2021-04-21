@@ -2,7 +2,7 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #f7a072;
+  --primary-color: #0f6a79;
   --dark-color: #343a40;
   --light-color: white;
   --danger-color: #dc3545;
@@ -208,6 +208,7 @@ img {
 }
 
 .btn:hover {
+  background-color: #f7a072;
   opacity: 0.8;
 }
 
@@ -245,6 +246,10 @@ img {
 }
 
 /* Forms */
+.login-pop {
+  width: 50%;
+}
+
 .form .form-group {
   margin: 1.2rem 0;
 }
@@ -530,6 +535,31 @@ footer {
 }
 */
 
+
+.landing-welcome {
+  color: #0f6a79;
+  margin: 0%;
+  font-size: 2rem;
+  font-family: Montserrat;
+  font-weight: 600;
+  position: relative;
+  bottom: 60px;
+}
+
+.landing-fisher {
+  color: #fff;
+  margin: 0%;
+  font-size: 8rem;
+  font-family: "League Gothic";
+  font-weight: 200;
+  position: relative;
+  bottom: 55px;
+}
+
+.signup-landing {
+  position: relative;
+  bottom: 35px;
+}
 
 /* Profiles Page */
 .profile {
