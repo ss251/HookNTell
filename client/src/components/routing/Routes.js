@@ -13,6 +13,7 @@ import Posts from "../posts/Posts";
 import Post from "../post/Post";
 import NotFound from "../layout/NotFound";
 import About from "../layout/About";
+import Map from "../layout/Map";
 import PrivateRoute from "../routing/PrivateRoute";
 
 const Routes = (props) => {
@@ -25,11 +26,11 @@ const Routes = (props) => {
         <Route exact path="/profiles" component={Profiles} />
         <Route exact path="/profile/:id" component={Profile} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/map" component={Map} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/create-profile" component={ProfileForm} />
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/add-catches" component={AddCatch} />
-
         <PrivateRoute exact path="/posts" component={Posts} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
         <Route component={NotFound} />

@@ -46,6 +46,15 @@ img {
   margin-bottom: 3rem;
 }
 
+.map-box {
+  background-color:white;
+  padding: 3rem;
+}
+
+.map-title {
+  color:#16697A;
+}
+
 /* Text Styles*/
 .x-large {
   font-size: 4rem;
