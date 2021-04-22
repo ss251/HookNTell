@@ -4,7 +4,7 @@ import lilfish from "../../img/lilfish.png";
 import report from "../../img/report.png";
 import connect from "../../img/connect.png";
 import find from "../../img/find.png";
-import footer from "../../img/footer.png";
+
 
 class about extends Component {
     render() {
@@ -104,36 +104,6 @@ class about extends Component {
                         </p>
                     </div>
                 </div>
-
-                <footer>
-                    <div className="flex">
-                        <div className="left">
-                            <h6>
-                                Husky Devs
-                        </h6>
-                            <p>
-                                NE Pacific St, University, Washington 98105, United States
-                        </p>
-                        </div>
-                        <div className="middle">
-                            <img src={footer} />
-                        </div>
-                        <div className="right">
-                            <p>
-                                Home
-                        </p>
-                            <p>
-                                About
-                        </p>
-                            <p>
-                                Map
-                        </p>
-                            <p>
-                                Profile
-                        </p>
-                        </div>
-                    </div>
-                </footer>
             </div>
         )
     }
