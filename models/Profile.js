@@ -19,7 +19,6 @@ const ProfileSchema = new mongoose.Schema({
       },
       species: {
         type: String,
-        required: true,
       },
       date: {
         type: Date,
