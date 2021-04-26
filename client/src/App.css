@@ -509,6 +509,7 @@ Footer
 */
 footer {
   background-color: white;
+  position: sticky;
 }
 
 .flex .left  {
