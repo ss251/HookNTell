@@ -37,7 +37,7 @@ const App = () => {
             <Route exact path="/" component={Landing} />
             <Route component={Routes} />
           </Switch>
-          <Footer/>
+          <Footer />
         </Fragment>
       </Router>
     </Provider>
