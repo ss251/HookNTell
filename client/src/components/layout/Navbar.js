@@ -19,9 +19,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         <Link to="/map">Map</Link>
       </li>
       <li>
-        <Link to="/posts">Posts</Link>
-      </li>
-      <li>
         <Link to="/dashboard">Profile</Link>
       </li>
       <li>
@@ -54,7 +51,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 
   return (
     <nav className="navbar bg-light">
-      <h1>
+     
         <Link to="/">
           <img
             className="logo"
@@ -65,7 +62,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
             onClick={(e) => (e.currentTarget.src = logo2)}
           />
         </Link>
-      </h1>
+      
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>
   );
