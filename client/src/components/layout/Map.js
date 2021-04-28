@@ -3,18 +3,39 @@ import MapGL, {
     Source,
     Layer,
     NavigationControl,
+    ScaleControl
 }  from '@urbica/react-map-gl';
-import "mapbox-gl/dist/mapbox-gl.css"; 
+import "mapbox-gl/dist/mapbox-gl.css";
+import location from "../../img/location.png"; 
+// import { Container } from "react-bootstrap";
 
 const TOKEN =
   "pk.eyJ1Ijoia3lsZXMzMiIsImEiOiJja25wc2lyZGwwNTIzMzFtdnAzZzl6NjJhIn0.658oMKu-TbFxCBT1ui8mzQ";
 
 function Map() {
+  //const [viewportChangeMethod] = useState('flyTo');
+
   const [viewport, setViewport] = useState({
     latitude: 46.767,
     longitude: -120.457,
     zoom: 11,
   });
+  
+  // const onChange = (event) => {
+  //   setViewportChangeMethod(event.target.value);
+  // };
+  
+  const onClick = (event) => {
+    const { lngLat } = event;
+  
+    const newVewport = {
+      ...viewport,
+      latitude: lngLat.lat,
+      longitude: lngLat.lng
+    };
+  
+    setViewport(newVewport);
+  };
 
   //const [filterValue, setFilterValue] = useState(1);
 
@@ -67,10 +88,12 @@ function Map() {
           style={{ width: "100%", height: "400px" }}
           mapStyle="mapbox://styles/kyles32/cknpu9e1p65k417nqs991zxcd"
           accessToken={TOKEN}
+          onClick={onClick}
           latitude={viewport.latitude}
           longitude={viewport.longitude}
           zoom={viewport.zoom}
           onViewportChange={setViewport}
+          //viewportChangeMethod={viewportChangeMethod}
         >
           <Source id="points" type="geojson" data={data} />
           <Layer
@@ -83,15 +106,44 @@ function Map() {
             }}
           />
           <NavigationControl showCompass showZoom position="top-right" />
+          <ScaleControl unit='metric' position='bottom-right' />
         </MapGL>
 
-        {/* <button onClick={() => setFilterValue(1)}>1</button>
-        <button onClick={() => setFilterValue(2)}>2</button>
-        <button onClick={() => setFilterValue(3)}>3</button> */}
       </div>
       <div className="data-box">
-        <h4>Catch Data</h4>
+        <h4>
+          <div className="catch-title">Catch Data</div>
+        </h4>
+        <div className="container">
+          <div className="title-section">
+            <div className="fish-type">King Salmon</div>
+            <div className="location">
+              <img src={location} />
+            </div>
+          </div>
+          <div className="catch-data">            
+            <div className="catch-date">Caught 4/3/20</div>
+            <div className="weight">15 pounds</div>
+            <div className="length">17 inches</div>
+            <div className="location">Snake River, WA</div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="title-section">
+            <div className="fish-type">Rainbow Trout</div>
+            <div className="location">
+              <img src={location} />
+            </div>
+          </div>
+          <div className="catch-data">            
+            <div className="catch-date">Caught 3/7/20</div>
+            <div className="weight">7 pounds</div>
+            <div className="length">12 inches</div>
+            <div className="location">Yakima River, WA</div>      
+          </div>
+        </div>
       </div>
+      
     </section>
   );
 }

@@ -46,13 +46,51 @@ img {
   margin-bottom: 3rem;
 }
 
-.map-box {
-  background-color:white;
+.data-box .container {
+  margin: 1rem;
+  padding: 1rem;
+  max-width: none;
+  background-color: white;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.location img {
+  width: 26px;
+}
+
+.title-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.catch-data {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  background-color: white;
+  margin: 10px;
+}
+
+.catch-title {
+  color:#16697A;
+}
+
+.map {
+  background-color: #f2f2f2;
   padding: 3rem;
 }
 
 .map-title {
   color:#16697A;
+  font-weight: bold;
+}
+
+.fish-type {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0F6A79;
 }
 
 /* Text Styles*/
@@ -263,10 +301,14 @@ img {
   margin: 1.2rem 0;
 }
 
+::placeholder {
+  color: black;
+}
+
 .form .form-text {
   display: block;
   margin-top: 0.3rem;
-  color: #888;
+  color: black;
 }
 
 .form input[type="text"],
@@ -279,7 +321,7 @@ img {
   width: 100%;
   padding: 0.4rem;
   font-size: 1.2rem;
-  border: 1px solid #ccc;
+  border: 1px solid black;
 }
 
 .form input[type="submit"],
@@ -348,7 +390,8 @@ button {
 
 .navbar a {
   color: #16697a;
-  padding: 0.45rem;
+  padding-left: 0.45rem;
+  padding-right: 0.45rem;
   margin: 0 0.25rem;
 }
 
