@@ -12,7 +12,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       {/*<li>
         <Link to="/profiles">Fisherpeople</Link>
       </li>*/}
-       <li>
+      <li>
         <Link to="/about">About</Link>
       </li>
       <li>
@@ -37,6 +37,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       <li>
         <Link to="/map">Map</Link>
       </li>
+
       {/*<li>
         <Link to="/profiles">Fisherpeople</Link>
       </li>*/}
@@ -51,18 +52,17 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
 
   return (
     <nav className="navbar bg-light">
-     
-        <Link to="/">
-          <img
-            className="logo"
-            alt="hookntell logo"
-            src={logo}
-            onMouseOver={(e) => (e.currentTarget.src = logo2)}
-            onMouseOut={(e) => (e.currentTarget.src = logo)}
-            onClick={(e) => (e.currentTarget.src = logo2)}
-          />
-        </Link>
-      
+      <Link to="/">
+        <img
+          className="logo"
+          alt="hookntell logo"
+          src={logo}
+          onMouseOver={(e) => (e.currentTarget.src = logo2)}
+          onMouseOut={(e) => (e.currentTarget.src = logo)}
+          onClick={(e) => (e.currentTarget.src = logo2)}
+        />
+      </Link>
+
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>
   );

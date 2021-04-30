@@ -168,8 +168,15 @@ img {
 .my-1 {
   margin: 1rem 0;
 }
+.my-1-signin {
+  margin-bottom: 15rem;
+}
 .my-2 {
   margin: 2rem 0;
+}
+.my-2-dash {
+  margin: 2rem 0;
+  padding-bottom: 14rem;
 }
 .my-3 {
   margin: 3rem 0;
@@ -777,14 +784,16 @@ Footer
 
 footer {
   background-color: white;
-}
-
-.footerCon {
   margin-left: auto;
   margin-right: auto;
   max-width: 1100px;
   padding: 0 2rem;
-  width: 90%;
+  width: 100%;
+  bottom: 0;
+  position: fixed;
+}
+
+.footerCon {
 }
 
 .flex .left {
@@ -953,6 +962,23 @@ footer {
   grid-area: catch;
 }
 
+.card {
+  width: 50rem;
+  justify-content: center;
+}
+
+.card-title {
+  padding: 1rem;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.card-text {
+  padding: 1rem;
+}
+
 .profile-catch h2,
 
 .profile-catch > div,
@@ -1072,3 +1098,6 @@ footer {
     padding: 0.3rem 0.4rem;
   }
 }
+
+/* random
+*/

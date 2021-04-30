@@ -4,9 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addCatches } from "../../actions/profile";
 import emailjs from "emailjs-com";
+import axios from "axios";
+
+const endpoint = "http://localhost:3000/api/s3/upload";
 
 const AddCatch = ({ addCatches, history }) => {
   const [formData, setFormData] = useState({
+    img: "",
     fishtype: "",
     areacode: "",
     species: "",
@@ -22,6 +26,7 @@ const AddCatch = ({ addCatches, history }) => {
   });
 
   const {
+    img,
     fishtype,
     areacode,
     species,
@@ -61,6 +66,14 @@ const AddCatch = ({ addCatches, history }) => {
 
   const changeSelectOptionHandler = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const imgUploadImgHandler = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.target);
+    axios.post(endpoint, data).then(() => {
+      this.props.history.push("/");
+    });
   };
 
   const renderSelectedForm = (param) => {
@@ -276,7 +289,7 @@ const AddCatch = ({ addCatches, history }) => {
             </div>
           </Fragment>
         );
-      case "DungenessCrab":
+      case "Dungeness Crab":
         return (
           <Fragment>
             <div className="form-group">
@@ -421,6 +434,19 @@ const AddCatch = ({ addCatches, history }) => {
           //sendEmail(e);
           addCatches(formData, history);
         }}
+      ></form>
+      <form className="form" onSubmit={imgUploadImgHandler}>
+        <button type="submit" className="btn btn-primary">
+          Upload Image
+        </button>
+      </form>
+      <form
+        className="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          //sendEmail(e);
+          addCatches(formData, history);
+        }}
       >
         <div className="form-group-select">
           <select
@@ -434,7 +460,7 @@ const AddCatch = ({ addCatches, history }) => {
             <option value="Sturgeon">Sturgeon</option>
             <option value="Halibut">Halibut</option>
             <option value="Steelhead">Steelhead</option>
-            <option value="DungenessCrab">Dungeness Crab</option>
+            <option value="Dungeness Crab">Dungeness Crab</option>
           </select>
         </div>
         {renderSelectedForm(formData.fishtype)}

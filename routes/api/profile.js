@@ -151,11 +151,7 @@ router.put(
   "/catch",
   auth,
   check("areacode", "Area Code is required").notEmpty(),
-  check("species", "Species is required").notEmpty(),
   check("location", "Location is required").notEmpty(),
-  check("weight", "Weight is required").notEmpty(),
-  check("length", "Length is required").notEmpty(),
-  check("habitat", "Habitat is required").notEmpty(),
   check("date", "From date is required and needs to be from the past")
     .notEmpty()
     .custom((value, { req }) => (req.body.to ? value < req.body.to : true)),

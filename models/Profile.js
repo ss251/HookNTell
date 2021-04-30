@@ -13,6 +13,10 @@ const ProfileSchema = new mongoose.Schema({
   },
   catches: [
     {
+      fishtype: {
+        type: String,
+        required: true,
+      },
       areacode: {
         type: String,
         required: true,
@@ -30,15 +34,21 @@ const ProfileSchema = new mongoose.Schema({
       },
       weight: {
         type: String,
-        required: true,
       },
       length: {
         type: String,
-        required: true,
       },
       habitat: {
         type: String,
-        required: true,
+      },
+      cliptype: {
+        type: String,
+      },
+      chartertype: {
+        type: String,
+      },
+      crabskept: {
+        type: String,
       },
       notes: {
         type: String,
