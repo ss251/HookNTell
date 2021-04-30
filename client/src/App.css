@@ -303,6 +303,8 @@ img {
 
 .form-group-select {
   background-color: #c3dbde;
+  width: 101.4%;
+  height: 4rem;
 }
 
 ::placeholder {

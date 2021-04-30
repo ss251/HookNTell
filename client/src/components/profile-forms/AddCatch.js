@@ -15,6 +15,9 @@ const AddCatch = ({ addCatches, history }) => {
     weight: "",
     length: "",
     habitat: "",
+    cliptype: "",
+    chartertype: "",
+    crabskept: "",
     notes: "",
   });
 
@@ -27,6 +30,9 @@ const AddCatch = ({ addCatches, history }) => {
     weight,
     length,
     habitat,
+    cliptype,
+    chartertype,
+    crabskept,
     notes,
   } = formData;
 
@@ -71,15 +77,23 @@ const AddCatch = ({ addCatches, history }) => {
                 onChange={onChange}
               />
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                placeholder="* Species"
+            <div className="form-group-select">
+              <select
+                className="form-group-select"
                 name="species"
                 value={species}
                 onChange={onChange}
                 required
-              />
+              >
+                <option>* Select Species</option>
+                <option value="Chinook">Chinook (CHIN)</option>
+                <option value="Coho">Coho (COHO)</option>
+                <option value="Chum">Chum (CHUM)</option>
+                <option value="Pink">Pink (PINK)</option>
+                <option value="Sockeye">Sockeye (SOCK)</option>
+                <option value="ChinookJack">Chinook Jack (CHIN JACK)</option>
+                <option value="CohoJack">Coho Jack (COHO JACK)</option>
+              </select>
             </div>
             <div className="form-group">
               <input
@@ -118,12 +132,135 @@ const AddCatch = ({ addCatches, history }) => {
                 onChange={onChange}
               />
             </div>
+            <div className="form-group-select">
+              <select
+                className="form-group-select"
+                name="cliptype"
+                value={cliptype}
+                onChange={onChange}
+                required
+              >
+                <option>* Select Clip Type</option>
+                <option value="Hatchery">Hatchery (H)</option>
+                <option value="Wild">Wild (W)</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <textarea
+                name="notes"
+                cols="30"
+                rows="5"
+                placeholder="Notes"
+                value={notes}
+                onChange={onChange}
+              />
+            </div>
+          </Fragment>
+        );
+      case "Sturgeon":
+        return (
+          <Fragment>
             <div className="form-group">
               <input
                 type="text"
-                placeholder="* Habitat (Clip Type)"
-                name="habitat"
-                value={habitat}
+                placeholder="* Area Code"
+                name="areacode"
+                value={areacode}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group-select">
+              <select
+                className="form-group-select"
+                name="species"
+                value={species}
+                onChange={onChange}
+              >
+                <option>* Select Type</option>
+                <option value="White">White (W)</option>
+                <option value="Green">Green *May not be retained*</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <input
+                type="date"
+                placeholder="* Date"
+                name="date"
+                value={date}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Location"
+                name="location"
+                value={location}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Length (in)"
+                name="length"
+                value={length}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <textarea
+                name="notes"
+                cols="30"
+                rows="5"
+                placeholder="Notes"
+                value={notes}
+                onChange={onChange}
+              />
+            </div>
+          </Fragment>
+        );
+      case "Steelhead":
+        return (
+          <Fragment>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Area Code"
+                name="areacode"
+                value={areacode}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="date"
+                placeholder="* Date"
+                name="date"
+                value={date}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Location"
+                name="location"
+                value={location}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Length (in)"
+                name="length"
+                value={length}
                 onChange={onChange}
               />
             </div>
@@ -139,17 +276,134 @@ const AddCatch = ({ addCatches, history }) => {
             </div>
           </Fragment>
         );
-      case "form_name2":
+      case "DungenessCrab":
         return (
-          <form name="form_name1" id="form_name2">
-            form 2
-          </form>
+          <Fragment>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Area Code"
+                name="areacode"
+                value={areacode}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="date"
+                placeholder="* Date"
+                name="date"
+                value={date}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Location"
+                name="location"
+                value={location}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group-select">
+              <select
+                className="form-group-select"
+                name="crabskept"
+                value={crabskept}
+                onChange={onChange}
+                required
+              >
+                <option>* Select No. of Crabs Kept</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <textarea
+                name="notes"
+                cols="30"
+                rows="5"
+                placeholder="Notes"
+                value={notes}
+                onChange={onChange}
+              />
+            </div>
+          </Fragment>
         );
-      case "form_name3":
+      case "Halibut":
         return (
-          <form name="form_name1" id="form_name3">
-            form 3
-          </form>
+          <Fragment>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Area Code"
+                name="areacode"
+                value={areacode}
+                onChange={onChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="date"
+                placeholder="* Date"
+                name="date"
+                value={date}
+                onChange={onChange}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="* Location"
+                name="location"
+                value={location}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <input
+                type="text"
+                placeholder="Length (in)"
+                name="length"
+                value={length}
+                onChange={onChange}
+              />
+            </div>
+
+            <div className="form-group-select">
+              <select
+                className="form-group-select"
+                name="chartertype"
+                value={chartertype}
+                onChange={onChange}
+                required
+              >
+                <option>* Select Charter Type</option>
+                <option value="Charter">Charter (C)</option>
+                <option value="Private">Private (P)</option>
+              </select>
+            </div>
+
+            <div className="form-group">
+              <textarea
+                name="notes"
+                cols="30"
+                rows="5"
+                placeholder="Notes"
+                value={notes}
+                onChange={onChange}
+              />
+            </div>
+          </Fragment>
         );
       default:
         return null;
@@ -168,7 +422,7 @@ const AddCatch = ({ addCatches, history }) => {
           addCatches(formData, history);
         }}
       >
-        <div className="form-group">
+        <div className="form-group-select">
           <select
             className="form-group-select"
             name="fishtype"
