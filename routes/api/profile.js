@@ -32,6 +32,42 @@ router.get("/me", auth, async (req, res) => {
   }
 });
 
+//@route POST api/profile/avatar
+//@desc upload avatar for profile
+//@access private
+
+router.post("/avatar", auth, async (req, res) => {
+  try {
+    // console.log("server: req.body:  ", req.body);
+    let profile = await Profile.findOne({ user: req.user.id });
+    profile.images.picture = req.body.picture;
+    await profile.save();
+    //console.log("changed profile:", profile);
+    return res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+//@route POST api/profile/cover
+//@desc upload cover for profile
+//@access private
+
+router.post("/cover", auth, async (req, res) => {
+  try {
+    // console.log("server: req.body:  ", req.body);
+    let profile = await Profile.findOne({ user: req.user.id });
+    profile.images.cover = req.body.cover;
+    await profile.save();
+    //console.log("changed profile:", profile);
+    return res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private

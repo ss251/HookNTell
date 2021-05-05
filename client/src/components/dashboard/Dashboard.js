@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import DashboardActions from "./DashboardActions";
 import Catch from "./Catch";
 
+import { getProfileById } from "../../actions/profile";
+
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 
 const Dashboard = ({

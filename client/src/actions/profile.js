@@ -94,6 +94,64 @@ export const createProfile = (formData, history, edit = false) => async (
   }
 };
 
+// Send the url of uploaded avatar (to Cloudinary) to MongoDB.
+export const uploadProfileImg = (images, history) => async (dispatch) => {
+  try {
+    console.log("action");
+    console.log("images", images);
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const res = await api.post("/profile/avatar", images, config);
+    console.log("status: ", res.status);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert("Avatar Picture Updated", "success"));
+    history.push("/me");
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Send the url of uploaded cover (to Cloudinary) to MongoDB.
+export const uploadProfileCover = (images, history) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const res = await api.post("/profile/cover", images, config);
+    console.log("status: ", res.status);
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data,
+    });
+    dispatch(setAlert("Cover Picture Updated", "success"));
+    history.push("/me");
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Add Catch
 export const addCatches = (formData, history) => async (dispatch) => {
   try {

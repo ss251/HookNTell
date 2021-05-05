@@ -14,6 +14,7 @@ import Post from "../post/Post";
 import NotFound from "../layout/NotFound";
 import About from "../layout/About";
 import Map from "../layout/Map";
+import UploadImages from "../profile-forms/UploadImages";
 import PrivateRoute from "../routing/PrivateRoute";
 
 const Routes = (props) => {
@@ -33,6 +34,7 @@ const Routes = (props) => {
         <PrivateRoute exact path="/add-catches" component={AddCatch} />
         <PrivateRoute exact path="/posts" component={Posts} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
+        <PrivateRoute exact path="/upload" component={UploadImages} />
         <Route component={NotFound} />
       </Switch>
     </section>

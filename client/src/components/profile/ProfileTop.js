@@ -1,16 +1,27 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const ProfileTop = ({
   profile: {
     location,
     social,
+    images: { picture, cover },
     user: { name, avatar },
   },
+  edit,
 }) => {
   return (
     <div className="profile-top bg-primary p-2">
-      <img className="round-img my-1" src={avatar} alt="" />
+      <div className="cover-overlay" />
+      <div className="bg-cover">
+        <img src={cover} alt="" />
+      </div>
+      <img
+        className="round-img my-1"
+        src={picture === "" ? avatar : picture}
+        alt=""
+      />
       <h1 className="large">{name}</h1>
       <p>{location ? <span>{location}</span> : null}</p>
       <div className="icons my-1">
@@ -28,6 +39,13 @@ const ProfileTop = ({
                 </a>
               ))
           : null}
+        <p>
+          {edit && (
+            <Link to="/upload" className="btn btn-dark">
+              Add or update avatar and cover pictures
+            </Link>
+          )}
+        </p>
       </div>
     </div>
   );

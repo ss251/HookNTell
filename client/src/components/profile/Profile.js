@@ -31,7 +31,14 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               </Link>
             )}
           <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
+            <ProfileTop
+              profile={profile}
+              edit={
+                auth.isAuthenticated &&
+                auth.loading === false &&
+                auth.user._id === profile.user._id
+              }
+            />
             <ProfileAbout profile={profile} />
             <div className="profile-catch bg-white p-2">
               <h2 className="text-primary">Catches</h2>
