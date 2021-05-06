@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import DashboardActions from "./DashboardActions";
@@ -19,19 +19,9 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
-      </p>
       {profile !== null ? (
         <Fragment>
-          <DashboardActions />
-          <Catch catches={profile.catches} />
-          <div className="my-2">
-            <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              <i className="fas fa-user-minus" /> Delete My Account
-            </button>
-          </div>
+          <Redirect to={`/profile/${profile.user._id}`}></Redirect>
         </Fragment>
       ) : (
         <Fragment>

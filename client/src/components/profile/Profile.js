@@ -38,11 +38,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             </div>
             <ProfileTop
               profile={profile}
-              edit={
-                auth.isAuthenticated &&
-                auth.loading === false &&
-                auth.user._id === profile.user._id
-              }
+              edit={auth.isAuthenticated && auth.loading === false}
             ></ProfileTop>
             <div className="catch-container">
               {showComponent ? (

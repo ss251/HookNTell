@@ -5,6 +5,7 @@ import Landing from "./components/layout/Landing";
 import Routes from "./components/routing/Routes";
 import { LOGOUT } from "./actions/types";
 import Footer from "./components/layout/Footer";
+import PrivateRoute from "../src/components/routing/PrivateRoute";
 
 // Redux
 import { Provider } from "react-redux";
@@ -36,7 +37,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/profile/:id" component={Profile} />
+            <PrivateRoute exact path="/profile/:id" component={Profile} />
             <Route component={Routes} />
           </Switch>
         </Fragment>

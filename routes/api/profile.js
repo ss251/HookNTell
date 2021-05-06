@@ -12,10 +12,10 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
 
-// @route    GET api/profile/me
+// @route    GET api/profile/:id
 // @desc     Get current users profile
 // @access   Private
-router.get("/me", auth, async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({
       user: req.user.id,
