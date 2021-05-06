@@ -40,7 +40,7 @@ const UploadImages = ({ uploadProfileImg, uploadProfileCover, history }) => {
     <Fragment>
       <div className="upload-container">
         <h1 className="large text-primary">Upload Avatar</h1>{" "}
-        <p className="lead">For best results, crop image into a square.</p>
+        <p className="lead">Update profile and cover picture</p>
         <button
           className="btn btn-primary my-1"
           onClick={() => {
@@ -49,7 +49,7 @@ const UploadImages = ({ uploadProfileImg, uploadProfileCover, history }) => {
         >
           Upload Avatar
         </button>
-        <h1 className="large text-primary">Upload Cover</h1>{" "}
+        
         <button
           className="btn btn-primary my-1"
           onClick={() => {

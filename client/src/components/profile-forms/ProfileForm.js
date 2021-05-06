@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
+import UploadImages from "./UploadImages"
 
 const initialState = {
   location: "",
@@ -61,6 +62,7 @@ const ProfileForm = ({
       <p className="lead">
         <i className="fas fa-user" /> Add some changes to your profile
       </p>
+      
       <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
@@ -159,7 +161,7 @@ const ProfileForm = ({
         <input type="submit" className="btn btn-primary my-1" />
         <Link
           className="btn btn-light my-1"
-          to={`/profile/${profile.user._id}`}
+          to={`/dashboard`}
         >
           Go Back
         </Link>

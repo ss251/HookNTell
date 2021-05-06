@@ -92,33 +92,34 @@ img {
 }
 
 .large {
-  font-size: 3rem;
+  font-size: 4rem;
   line-height: 1.2;
-  
+  font-family: -apple-system, Roboto;
+  font-weight: lighter;
   float: left;
   margin-left: 19rem;
-  margin-top: -15rem;
+  margin-top: -11rem;
   color: var(--primary-color);
 }
 
 .location-profile {
   float: left;
   position: relative;
-  margin-top: -11rem;
+  margin-top: -6rem;
   margin-left: 19.3rem;
 }
 
 .add-catch {
   position: relative;
   float: right;
-  bottom: 14.7rem;
+  bottom: 11.5rem;
   right: 9.5rem;
 }
 
 .edit-profile {
   position: relative;
   float: right;
-  bottom: 11.5rem;
+  bottom: 8.5rem;
   right: 2rem;
 }
 
@@ -986,6 +987,10 @@ footer {
   overflow: hidden;
 }
 
+.bg-profile {
+  max-height: 300px;
+}
+
 .profile-top .icons a {
   color: #fff;
   margin: 0 0.3rem;
@@ -1048,13 +1053,13 @@ div.profile-grid.my-1 {
 .profile-show-catches {
   height: 0;
   width: auto;
-  margin-top: -5rem;
+  margin-top: -3.8rem;
   margin-left: 9rem;
 }
 
 #root > div > div.profile-show-catches > button {
   float: left;
-
+  white-space: nowrap;
   font-size: x-large;
   color: #676d6e;
   background: transparent;
@@ -1069,11 +1074,12 @@ div.profile-grid.my-1 {
 }
 
 .profile-catch {
+  display: flex;
   grid-area: catch;
   width: 50%;
   margin-left: auto;
-  margin-right: auto;
-
+  margin-right: 8.5rem;
+  flex-direction: column;
   border: 0px;
   background-color: inherit;
 }
@@ -1093,6 +1099,7 @@ div.profile-grid.my-1 {
 .card-body {
   padding: 2rem;
   background-color: #eef5f6;
+  padding-bottom: 3rem;
 }
 
 p.card-text {

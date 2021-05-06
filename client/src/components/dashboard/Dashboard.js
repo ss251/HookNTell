@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import DashboardActions from "./DashboardActions";
 import Catch from "./Catch";
 
+import { getProfileById } from "../../actions/profile";
+
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 
 const Dashboard = ({
@@ -19,6 +21,10 @@ const Dashboard = ({
 
   return (
     <Fragment>
+      <h1 className="large text-primary">Dashboard</h1>
+      <p className="lead">
+        <i className="fas fa-user" /> Welcome {user && user.name}
+      </p>
       {profile !== null ? (
         <Fragment>
           <Redirect to={`/profile/${profile.user._id}`}></Redirect>

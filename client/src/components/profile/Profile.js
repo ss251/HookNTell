@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
-import ProfileCatches from "./ProfileCatches";
 import Catch from "../dashboard/Catch";
 
 import { getProfileById } from "../../actions/profile";

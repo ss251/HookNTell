@@ -37,7 +37,7 @@ const ProfileTop = ({
           ) : null}
         </p>
       </div>
-      <div className="icons my-1">
+      
         {/* {social
           ? Object.entries(social)
               .filter(([_, value]) => value)
@@ -60,7 +60,7 @@ const ProfileTop = ({
             Edit Profile
           </Link>
         </p>
-      </div>
+      
     </div>
   );
 };
