@@ -38,25 +38,27 @@ const UploadImages = ({ uploadProfileImg, uploadProfileCover, history }) => {
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Upload Avatar</h1>{" "}
-      <p className="lead">For best results, crop image into a square.</p>
-      <button
-        className="btn btn-primary my-1"
-        onClick={() => {
-          myWidget1.open();
-        }}
-      >
-        Upload Avatar
-      </button>
-      <h1 className="large text-primary">Upload Cover</h1>{" "}
-      <button
-        className="btn btn-primary my-1"
-        onClick={() => {
-          myWidget2.open();
-        }}
-      >
-        Upload Cover
-      </button>
+      <div className="upload-container">
+        <h1 className="large text-primary">Upload Avatar</h1>{" "}
+        <p className="lead">For best results, crop image into a square.</p>
+        <button
+          className="btn btn-primary my-1"
+          onClick={() => {
+            myWidget1.open();
+          }}
+        >
+          Upload Avatar
+        </button>
+        <h1 className="large text-primary">Upload Cover</h1>{" "}
+        <button
+          className="btn btn-primary my-1"
+          onClick={() => {
+            myWidget2.open();
+          }}
+        >
+          Upload Cover
+        </button>
+      </div>
     </Fragment>
   );
 };

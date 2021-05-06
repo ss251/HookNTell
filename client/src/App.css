@@ -46,15 +46,6 @@ img {
   margin-bottom: 3rem;
 }
 
-.data-box .container {
-  margin: 1rem;
-  padding: 1rem;
-  max-width: none;
-  background-color: white;
-  border-radius: 15px;
-  width: 100%;
-}
-
 .location img {
   width: 26px;
 }
@@ -103,7 +94,32 @@ img {
 .large {
   font-size: 3rem;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  position: relative;
+  float: left;
+  margin-left: 20rem;
+  margin-top: -15rem;
+  color: var(--primary-color);
+}
+
+.location-profile {
+  float: left;
+  position: relative;
+  margin-top: -11rem;
+  margin-left: 20rem;
+}
+
+.add-catch {
+  position: relative;
+  float: right;
+  bottom: 16rem;
+  right: 9.5rem;
+}
+
+.edit-profile {
+  position: relative;
+  float: right;
+  bottom: 13rem;
+  right: 2rem;
 }
 
 .lead {
@@ -131,7 +147,9 @@ img {
   padding: 1rem;
 }
 .p-2 {
-  padding: 2rem;
+  /*
+  padding: 2rem;*/
+  padding: 0;
 }
 .p-3 {
   padding: 3rem;
@@ -174,6 +192,9 @@ img {
 .my-2 {
   margin: 2rem 0;
 }
+h2.my-2 {
+  background-color: white;
+}
 .my-2-dash {
   margin: 2rem 0;
   padding-bottom: 14rem;
@@ -186,7 +207,7 @@ img {
   display: inline-block;
   background: var(--light-color);
   color: #333;
-  padding: 0.4rem 1.3rem;
+
   font-size: 1rem;
   border: none;
   cursor: pointer;
@@ -464,7 +485,7 @@ button {
   width: 100%;
   top: 0;
   border-bottom: solid 1px var(--primary-color);
-  opacity: 0.9;
+  /* opacity: 0.9; */
 }
 
 .navbar ul {
@@ -933,20 +954,45 @@ footer {
 
 .profile-top {
   grid-area: top;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.profile-top img {
-  width: 250px;
+.profile-top .round-img {
+  position: relative;
+  margin-left: 4rem;
+  width: 200px;
+  float: left;
+  top: -80px;
+}
+
+.profile-images {
+  position: relative;
+  display: grid;
+  max-width: none;
+  margin: 0;
+  overflow: visible;
+}
+
+.bg-cover {
+  max-height: 300px;
+  padding: unset;
+  padding: 0;
+  margin: unset;
+  margin: 0;
+  overflow: hidden;
 }
 
 .profile-top .icons a {
   color: #fff;
   margin: 0 0.3rem;
+}
+
+h2.my-2 {
+  background: inherit;
 }
 
 .profile-top .icons a:hover {
@@ -958,13 +1004,86 @@ footer {
   text-align: center;
 }
 
+a.btn.btn-light.edit-profile {
+  background-color: transparent;
+  color: #676d6e;
+  border: var(--primary-color) solid 1px;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+a.btn.btn-light.edit-profile:hover {
+  background-color: #f7a072;
+  opacity: 0.8;
+}
+
+a.btn.btn-light.add-catch {
+  background-color: transparent;
+  color: #676d6e;
+  border: var(--primary-color) solid 1px;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+a.btn.btn-light.add-catch:hover {
+  background-color: #f7a072;
+  opacity: 0.8;
+}
+
+div.profile-about.bg-light.p-2 {
+  background: var(--primary-color);
+  border: var(--primary-color) solid 0.5px;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+div.icons.my-1 {
+  margin-top: unset;
+}
+
+div.profile-grid.my-1 {
+  margin: unset;
+}
+
+.profile-show-catches {
+  height: 0;
+  width: auto;
+  margin-top: -4rem;
+  margin-left: 9rem;
+}
+
+#root > div > div.profile-show-catches > button {
+  float: left;
+
+  font-size: x-large;
+  color: #676d6e;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+#root > div > div.profile-show-catches > button:hover {
+  background: transparent;
+  color: #f7a072;
+  box-shadow: none;
+}
+
 .profile-catch {
   grid-area: catch;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  border: 0px;
+  background-color: inherit;
 }
 
 .card {
-  width: 50rem;
-  justify-content: center;
+  width: 40rem;
+  margin-bottom: 4rem;
+  margin-top: 2rem;
+  right: 100%;
+  background: inherit;
 }
 
 .card-title {
@@ -973,21 +1092,21 @@ footer {
 
 .card-body {
   padding: 2rem;
+  background-color: #eef5f6;
 }
 
-.card-text {
+p.card-text {
   padding: 1rem;
 }
 
-.profile-catch h2,
+.profile-catch h2 {
+  background-color: inherit;
+}
 
 .profile-catch > div,
 
 
 .profile-catch > div:last-child,
-
-
-.profile-catch p,
 
 
 /* Posts Page */
@@ -1101,3 +1220,8 @@ footer {
 
 /* random
 */
+
+/* .upload-container {
+  padding-top: 5rem;
+  padding-left: 5rem;
+} */

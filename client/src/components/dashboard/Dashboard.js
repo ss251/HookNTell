@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import DashboardActions from "./DashboardActions";
 import Catch from "./Catch";
 
-import { getProfileById } from "../../actions/profile";
-
 import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 
 const Dashboard = ({
@@ -29,7 +27,6 @@ const Dashboard = ({
         <Fragment>
           <DashboardActions />
           <Catch catches={profile.catches} />
-
           <div className="my-2">
             <button className="btn btn-danger" onClick={() => deleteAccount()}>
               <i className="fas fa-user-minus" /> Delete My Account

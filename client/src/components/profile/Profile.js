@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -6,6 +6,7 @@ import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileCatches from "./ProfileCatches";
+import Catch from "../dashboard/Catch";
 
 import { getProfileById } from "../../actions/profile";
 
@@ -14,23 +15,27 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
+  const [showComponent, setShowComponent] = React.useState(false);
+
+  const handleCatches = () => {
+    setShowComponent(!showComponent);
+  };
+
   return (
     <Fragment>
       {profile === null ? (
         <Spinner />
       ) : (
         <Fragment>
-          <Link to="/profiles" className="btn btn-light">
-            Back To Profiles
-          </Link>
-          {auth.isAuthenticated &&
-            auth.loading === false &&
-            auth.user._id === profile.user._id && (
-              <Link to="/edit-profile" className="btn btn-dark">
-                Edit Profile
-              </Link>
-            )}
           <div className="profile-grid my-1">
+            <div className="profile-show-catches">
+              <button
+                className="btn btn-light show-catches"
+                onClick={handleCatches}
+              >
+                My Catches
+              </button>
+            </div>
             <ProfileTop
               profile={profile}
               edit={
@@ -38,21 +43,19 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                 auth.loading === false &&
                 auth.user._id === profile.user._id
               }
-            />
-            <ProfileAbout profile={profile} />
-            <div className="profile-catch bg-white p-2">
-              <h2 className="text-primary">Catches</h2>
-              {profile.catches.length > 0 ? (
-                <Fragment>
-                  <h4>Catches</h4>
-                  {profile.catches.map((fish) => (
-                    <ProfileCatches key={fish._id} catches={fish} />
-                  ))}
-                </Fragment>
-              ) : (
-                <h4>No catches reported</h4>
-              )}
+            ></ProfileTop>
+            <div className="catch-container">
+              {showComponent ? (
+                <div className="profile-catch bg-white p-2">
+                  {profile.catches.length > 0 ? (
+                    <Fragment>
+                      <Catch catches={profile.catches} />
+                    </Fragment>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
+            <ProfileAbout profile={profile} />
           </div>
         </Fragment>
       )}
