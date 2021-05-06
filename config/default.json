@@ -1,0 +1,9 @@
+{
+    "mongoURI": "mongodb+srv://Sailesh:sailesh123@cluster0.rzymc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "secret",
+    "AWS_BUCKET_NAME": "hookntellfish",
+    "AWS_ACCESS_KEY_ID": "AKIAXBX74X6COKW2PYDU",
+    "AWS_SECRET_ACCESS_KEY": "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",
+    "AWS_REGION": "us-west-2",
+    "AWS_Uploaded_File_URL": "https://hookntellfish.s3-us-west-2.amazonaws.com/"
+}
