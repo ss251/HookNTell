@@ -15,7 +15,7 @@ const ProfileTop = ({
     <div className="profile-top p-2">
       <div className="profile-images">
         <div className="bg-cover">
-          <img className="cover-img" src={cover} alt="" />
+        {edit && (<Link to="/upload"><img className="cover-img" src={cover} alt="" /></Link>)}
         </div>
         <div className="bg-profile">
           {edit && (
@@ -38,7 +38,7 @@ const ProfileTop = ({
         </p>
       </div>
       <div className="icons my-1">
-        {social
+        {/* {social
           ? Object.entries(social)
               .filter(([_, value]) => value)
               .map(([key, value]) => (
@@ -51,7 +51,7 @@ const ProfileTop = ({
                   <i className={`fab fa-${key} fa-2x`}></i>
                 </a>
               ))
-          : null}
+          : null} */}
         <p>
           <Link to="/add-catches" className="btn btn-light add-catch">
             + Catch

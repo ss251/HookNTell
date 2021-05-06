@@ -11,10 +11,10 @@
     "classnames": "^2.2.6",
     "emailjs-com": "^2.6.4",
     "jwt-decode": "^3.1.2",
-    "mapbox-gl": "^2.2.0",
+    "mapbox-gl": "^1.13.0",
     "normalize-url": "^1.9.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-map-gl": "^6.1.12",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",
@@ -39,9 +39,8 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "defaults",
+      "not ie 11"
     ],
     "development": [
       "last 1 chrome version",

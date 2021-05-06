@@ -94,9 +94,9 @@ img {
 .large {
   font-size: 3rem;
   line-height: 1.2;
-  position: relative;
+  
   float: left;
-  margin-left: 20rem;
+  margin-left: 19rem;
   margin-top: -15rem;
   color: var(--primary-color);
 }
@@ -105,20 +105,20 @@ img {
   float: left;
   position: relative;
   margin-top: -11rem;
-  margin-left: 20rem;
+  margin-left: 19.3rem;
 }
 
 .add-catch {
   position: relative;
   float: right;
-  bottom: 16rem;
+  bottom: 14.7rem;
   right: 9.5rem;
 }
 
 .edit-profile {
   position: relative;
   float: right;
-  bottom: 13rem;
+  bottom: 11.5rem;
   right: 2rem;
 }
 
@@ -1048,7 +1048,7 @@ div.profile-grid.my-1 {
 .profile-show-catches {
   height: 0;
   width: auto;
-  margin-top: -4rem;
+  margin-top: -5rem;
   margin-left: 9rem;
 }
 
