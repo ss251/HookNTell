@@ -39,8 +39,26 @@ router.get("/me", auth, async (req, res) => {
 router.post("/avatar", auth, async (req, res) => {
   try {
     // console.log("server: req.body:  ", req.body);
-    let profile = await Profile.findOne({ user: req.user.id });
+    let profile = await Profile.findOne({ user: req.user.id }).populate("user", ["name", "avatar"]);;
     profile.images.picture = req.body.picture;
+    await profile.save();
+    //console.log("changed profile:", profile);
+    return res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
+//@route POST api/profile/avatar
+//@desc upload avatar for profile
+//@access private
+
+router.post("/catch/img", auth, async (req, res) => {
+  try {
+    // console.log("server: req.body:  ", req.body);
+    let profile = await Profile.findOne({ user: req.user.id }).populate("user", ["name", "avatar"]);;
+    profile.catches[0].img = req.body.img;
     await profile.save();
     //console.log("changed profile:", profile);
     return res.json(profile);
@@ -57,7 +75,7 @@ router.post("/avatar", auth, async (req, res) => {
 router.post("/cover", auth, async (req, res) => {
   try {
     // console.log("server: req.body:  ", req.body);
-    let profile = await Profile.findOne({ user: req.user.id });
+    let profile = await Profile.findOne({ user: req.user.id }).populate("user", ["name", "avatar"]);;
     profile.images.cover = req.body.cover;
     await profile.save();
     //console.log("changed profile:", profile);
@@ -67,6 +85,34 @@ router.post("/cover", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+// // @route    PUT api/profile
+// // @desc     Create or update user profile
+// // @access   Private
+// router.put(
+//   "/catch",
+//   auth,
+//   check("location", "Location is required").notEmpty(),
+//   async (req, res) => {
+//     const errors = validationResult(req);
+//     if (!errors.isEmpty()) {
+//       return res.status(400).json({ errors: errors.array() });
+//     }
+
+//     try {
+//       const profile = await Profile.findOne({ user: req.user.id });
+
+//       profile.user.unshift(req.body);
+
+//       await profile.save();
+
+//       res.json(profile);
+//     } catch (err) {
+//       console.error(err.message);
+//       res.status(500).send("Server Error");
+//     }
+//   }
+// );
 
 // @route    POST api/profile
 // @desc     Create or update user profile
@@ -115,7 +161,7 @@ router.post(
         { user: req.user.id },
         { $set: profileFields },
         { new: true, upsert: true, setDefaultsOnInsert: true }
-      );
+      ).populate("user", ["name", "avatar"]);
       return res.json(profile);
     } catch (err) {
       console.error(err.message);
@@ -198,13 +244,13 @@ router.put(
     }
 
     try {
-      const profile = await Profile.findOne({ user: req.user.id });
+      const profile = await Profile.findOne({ user: req.user.id }).populate("user", ["name", "avatar"]);
 
       profile.catches.unshift(req.body);
 
       await profile.save();
 
-      res.json(profile);
+      return res.json(profile);
     } catch (err) {
       console.error(err.message);
       res.status(500).send("Server Error");

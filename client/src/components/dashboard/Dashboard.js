@@ -12,7 +12,7 @@ import { getCurrentProfile, deleteAccount } from "../../actions/profile";
 const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
-  auth: { user },
+  auth: { user, isAuthenticated },
   profile: { profile },
 }) => {
   useEffect(() => {
@@ -21,11 +21,8 @@ const Dashboard = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Dashboard</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Welcome {user && user.name}
-      </p>
-      {profile !== null ? (
+      
+      {profile !== null  ? (
         <Fragment>
           <Redirect to={`/profile/${profile.user._id}`}></Redirect>
         </Fragment>

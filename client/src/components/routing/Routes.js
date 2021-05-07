@@ -15,6 +15,7 @@ import NotFound from "../layout/NotFound";
 import About from "../layout/About";
 import Map from "../layout/Map";
 import UploadImages from "../profile-forms/UploadImages";
+import UploadCatchImg from "../profile-forms/UploadCatchImg";
 import PrivateRoute from "../routing/PrivateRoute";
 
 const Routes = (props) => {
@@ -33,6 +34,7 @@ const Routes = (props) => {
         <PrivateRoute exact path="/create-profile" component={ProfileForm} />
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/add-catches" component={AddCatch} />
+        <PrivateRoute exact path="/catch/img" component={UploadCatchImg} />
         <PrivateRoute exact path="/posts" component={Posts} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
         <Route component={NotFound} />

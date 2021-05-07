@@ -1,8 +1,12 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {Link} from "react-router-dom"
 import { deleteCatch } from "../../actions/profile";
 import formatDate from "../../utils/formatDate";
+import about from "../../img/about.png"
+
+
 
 const Catch = ({ catches, deleteCatch }) => {
   const report = catches.map((fish) => (
@@ -17,9 +21,14 @@ const Catch = ({ catches, deleteCatch }) => {
     //   <td className="hide-sm">{fish.height}</td>
     //   <td className="hide-sm">{fish.cliptype}</td>
     //   <td className="hide-sm">{fish.chartertype}</td>
+    
     <div className="card" key={fish._id}>
       <div className="card-body">
-        <h5 className="card-title">{fish.fishtype}</h5>
+      
+      <Link to="/catch/img">               
+      <h5 className="card-title">{fish.fishtype}</h5>        
+      </Link>
+        
         <p className="card-text">Area Code: {fish.areacode}</p>
         {fish.species ? (
           <p className="card-text">Species: {fish.species}</p>

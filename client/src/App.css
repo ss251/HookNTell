@@ -1106,6 +1106,15 @@ p.card-text {
   padding: 1rem;
 }
 
+.card-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 100%;
+  background-color: 'rgba(0, 0, 0, 0.5)';
+}
+
 .profile-catch h2 {
   background-color: inherit;
 }

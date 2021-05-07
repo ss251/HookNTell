@@ -11,6 +11,8 @@ const endpoint = "http://localhost:3000/api/s3/upload";
 const AddCatch = ({ auth, addCatches, history }) => {
   const [formData, setFormData] = useState({
     img: "",
+    lat: "",
+    lng: "",
     fishtype: "",
     areacode: "",
     species: "",
@@ -27,6 +29,8 @@ const AddCatch = ({ auth, addCatches, history }) => {
 
   const {
     img,
+    lat,
+    lng,
     fishtype,
     areacode,
     species,
@@ -434,20 +438,8 @@ const AddCatch = ({ auth, addCatches, history }) => {
           //sendEmail(e);
           addCatches(formData, history);
         }}
-      ></form>
-      <form className="form" onSubmit={imgUploadImgHandler}>
-        <button type="submit" className="btn btn-primary">
-          Upload Image
-        </button>
-      </form>
-      <form
-        className="form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          //sendEmail(e);
-          addCatches(formData, history);
-        }}
       >
+        
         <div className="form-group-select">
           <select
             className="form-group-select"
@@ -464,6 +456,12 @@ const AddCatch = ({ auth, addCatches, history }) => {
           </select>
         </div>
         {renderSelectedForm(formData.fishtype)}
+        {auth.isAuthenticated && auth.loading === false &&
+         (<Link to="/catch/img">
+         <button type="submit" className="btn btn-primary">
+          Upload Image
+        </button>
+        </Link>)}
 
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to={`/profile/${auth.user._id}`}>

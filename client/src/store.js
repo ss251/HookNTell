@@ -6,12 +6,17 @@ import setAuthToken from "./utils/setAuthToken";
 
 const initialState = {};
 
+const composeEnhancers = composeWithDevTools({  
+  trace: true, 
+  traceLimit: 25 
+}); 
+
 const middleware = [thunk];
 
 const store = createStore(
   rootReducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeEnhancers(applyMiddleware(...middleware))
 );
 
 // set up a store subscription listener

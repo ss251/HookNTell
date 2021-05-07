@@ -13,7 +13,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
-  const [showComponent, setShowComponent] = React.useState(false);
+  const [showComponent, setShowComponent] = React.useState(true);
 
   const handleCatches = () => {
     setShowComponent(!showComponent);

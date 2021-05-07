@@ -23,6 +23,9 @@ const ProfileSchema = new mongoose.Schema({
   },
   catches: [
     {
+      img: {
+        type: String,
+      },
       fishtype: {
         type: String,
         required: true,
