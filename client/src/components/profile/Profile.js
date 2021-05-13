@@ -15,7 +15,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 
   const [showComponent, setShowComponent] = React.useState(true);
 
-  const handleCatches = () => {
+  const handleCatches = (e) => {
+    e.preventDefault();
     setShowComponent(!showComponent);
   };
 
@@ -25,19 +26,22 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
         <Spinner />
       ) : (
         <Fragment>
-          <div className="profile-grid my-1">
+          <div className="profile-flex">
+            
+            <ProfileTop
+              profile={profile}
+              edit={auth.isAuthenticated && auth.loading === false}
+            ></ProfileTop>
+            
             <div className="profile-show-catches">
-              <button
+            <button
                 className="btn btn-light show-catches"
                 onClick={handleCatches}
               >
                 My Catches
               </button>
             </div>
-            <ProfileTop
-              profile={profile}
-              edit={auth.isAuthenticated && auth.loading === false}
-            ></ProfileTop>
+            <ProfileAbout profile={profile} />
             <div className="catch-container">
               {showComponent ? (
                 <div className="profile-catch bg-white p-2">
@@ -49,7 +53,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                 </div>
               ) : null}
             </div>
-            <ProfileAbout profile={profile} />
+            
           </div>
         </Fragment>
       )}
