@@ -46,6 +46,15 @@ img {
   margin-bottom: 3rem;
 }
 
+.map-container {
+  
+  margin: auto;
+  overflow: hidden;
+  padding: 0 2rem;
+  margin-top: 2rem;
+  margin-bottom: 10rem;
+}
+
 .location img {
   width: 26px;
 }
@@ -92,28 +101,45 @@ img {
 }
 
 .large {
-  font-size: 4rem;
+  font-size: 2.3rem;
   line-height: 1.2;
   font-family: -apple-system, Roboto;
-  font-weight: lighter;
+  
   margin: 0;
   
   color: var(--primary-color);
 }
 
 .home1 {
-  width: 20%;
-  float: left;
+  width: 15%;
+  height: 60%;
   position: relative;
-  margin-top: 0.1rem;
+  top: 0.2rem;
+}
+
+.info1 {
+  width: 10%;
+  height: 60%;
+  position: relative;
+  top: 0.2rem;
+  max-height: 1rem;
+  max-width: 1rem;
 }
 
 .location-profile {
   
   position: relative;
-  top: -0.7rem;
-  left: 0.2rem;
   
+  left: 0.5rem;
+  
+}
+
+.bio-profile {
+  
+  position: relative;
+  left: 0.5rem;
+  
+  overflow:auto;
 }
 
 .add-catch {
@@ -975,7 +1001,24 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 1rem;
+  margin-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.profile-basic {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 0.2rem;
+}
+
+.profile-bio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  text-align: left;
+  margin-top: 0.2rem;
+  max-width: 30rem;
 }
 
 .profile-features {
@@ -1072,14 +1115,20 @@ div.profile-grid.my-1 {
 
 .profile-show-catches {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 #root > div > div.profile-show-catches > button {
   white-space: nowrap;
-  font-size: x-large;
-  color: #676d6e;
+  font-size: 2.8rem;
+  text-transform: capitalize;
+  font-family: Roboto;
+  color: var(--primary-color);
   background: transparent;
   border: 0;
   box-shadow: none;

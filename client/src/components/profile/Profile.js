@@ -5,6 +5,7 @@ import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
+import Map from "../layout/Map";
 
 import { getProfileById } from "../../actions/profile";
 
@@ -13,11 +14,20 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
-  const [showComponent, setShowComponent] = React.useState(true);
+  const [showCatches, setShowCatches] = React.useState(true);
 
   const handleCatches = (e) => {
     e.preventDefault();
-    setShowComponent(!showComponent);
+    setShowMap(false)
+    setShowCatches(!showCatches);
+  };
+
+  const [showMap, setShowMap] = React.useState(false);
+
+  const handleMap = (e) => {
+    e.preventDefault();
+    setShowCatches(false)
+    setShowMap(!showMap);
   };
 
   return (
@@ -34,16 +44,35 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             ></ProfileTop>
             
             <div className="profile-show-catches">
-            <button
+            {showCatches ? <button
+                style={{color: "#f7a072"}}
                 className="btn btn-light show-catches"
                 onClick={handleCatches}
               >
                 My Catches
-              </button>
+              </button> : <button
+                className="btn btn-light show-catches"
+                onClick={handleCatches}
+              >
+                My Catches
+              </button>}
+              {showMap ? <button
+                style={{color: "#f7a072"}}
+                className="btn btn-light show-map"
+                onClick={handleMap}
+              >
+                My Map
+              </button>: <button
+                className="btn btn-light show-map"
+                onClick={handleMap}
+              >
+                My Map
+              </button>}
+              
             </div>
             <ProfileAbout profile={profile} />
             <div className="catch-container">
-              {showComponent ? (
+              {showCatches ? (
                 <div className="profile-catch bg-white p-2">
                   {profile.catches.length > 0 ? (
                     <Fragment>
@@ -53,7 +82,16 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
                 </div>
               ) : null}
             </div>
-            
+            <div className="map-container">
+              {showMap ? (
+                
+                    <Fragment>
+                      <Map/>
+                    </Fragment>
+                  
+                
+              ) : null}
+            </div>
           </div>
         </Fragment>
       )}

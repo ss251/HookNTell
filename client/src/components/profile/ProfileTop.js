@@ -5,12 +5,14 @@ import coverpicture from "../../img/coverimage.jpeg";
 import { connect } from "react-redux";
 import { uploadProfileImg, uploadProfileCover } from "../../actions/profile";
 import home1 from "../../img/home1.png"
+import info1 from "../../img/info-button.png"
 
 const ProfileTop = ({
   uploadProfileImg, 
   uploadProfileCover,
   history,
   profile: {
+    bio,
     location,
     social,
     images: { picture, cover },
@@ -75,12 +77,18 @@ const ProfileTop = ({
         <div className="profile-display">
         <div className="profile-info">
         <h1 className="large">{name}</h1>
-        <p>
-        
+        <div className="profile-basic">
+        <img className="home1" src={home1}></img>
           {location ? (
-            <span className="location-profile">{/*<img className="home1" src={home1}></img>*/}{location}</span>
+            <span className="location-profile">{location}</span>
           ) : null}
-        </p>
+        </div>
+        <div className="profile-bio">
+        <img className="info1" src={info1}></img>
+          {bio ? (
+            <span className="bio-profile">{bio}</span>
+          ) : null}
+        </div>
         </div>
           <div className="profile-features">
           <Link to="/add-catches" className="btn btn-light add-catch">
