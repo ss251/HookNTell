@@ -50,7 +50,7 @@ router.post("/avatar", auth, async (req, res) => {
   }
 });
 
-//@route POST api/profile/avatar
+//@route POST api/profile/catch/img
 //@desc upload avatar for profile
 //@access private
 
@@ -85,6 +85,48 @@ router.post("/cover", auth, async (req, res) => {
     res.status(500).send("Server error");
   }
 });
+
+//@route POST api/profile/catch/latlng
+//@desc add in coordinates for catch
+//@access private 
+router.post(
+  "/catch/latlng",
+  auth,
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    // destructure request
+    const {
+      lat,
+      lng,
+      // spread rest of the fields that don't need to be checked
+      ...rest
+    } = req.body;
+
+    // build a catch
+    const catchFields = {
+      lat: req.body.lat,
+      lng: req.body.lng,
+      ...rest,
+    };
+
+    try {
+      // Using upsert option (creates new doc if no match is found):
+      let profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: catchFields },
+        { new: true, upsert: true, setDefaultsOnInsert: true }
+      ).populate("user", ["name", "avatar"]);
+      return res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      return res.status(500).send("Server Error");
+    }
+  }
+);
 
 // // @route    PUT api/profile
 // // @desc     Create or update user profile

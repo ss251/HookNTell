@@ -45,6 +45,12 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         required: true,
       },
+      lat: {
+        type: Number
+      },
+      lng: {
+        type: Number
+      },
       weight: {
         type: String,
       },

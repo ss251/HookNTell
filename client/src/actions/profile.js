@@ -111,7 +111,7 @@ export const uploadProfileImg = (images, history) => async (dispatch) => {
       payload: res.data,
     });
     dispatch(setAlert("Avatar Picture Updated", "success"));
-    history.push("/");
+    history.push("/dashboard");
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -209,6 +209,32 @@ export const addCatches = (formData, history) => async (dispatch) => {
   }
 };
 
+export const addCoordinates = (formData, history) => async (dispatch) => {
+  try {
+    const res = await api.put("/profile/catch/latlng", formData);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data,
+    });
+
+    dispatch(setAlert("Coordinates added", "success"));
+
+    history.push("/dashboard");
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+    }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 // Delete catch
 export const deleteCatch = (id) => async (dispatch) => {
   try {
@@ -246,3 +272,6 @@ export const deleteAccount = () => async (dispatch) => {
     }
   }
 };
+
+// Logout
+export const clearProfile = () => ({ type: CLEAR_PROFILE });

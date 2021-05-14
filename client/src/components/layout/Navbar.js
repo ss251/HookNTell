@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
+import { clearProfile } from "../../actions/profile";
 import logo from "../../img/Logo.png";
 import logo2 from "../../img/Logo2.png";
 
-const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, profile: { profile }, clearProfile, logout }) => {
+
+  const logoutHandler = () => {
+    logout();
+    clearProfile();
+  }
+
   const authLinks = (
     <ul>
       {/*<li>
@@ -25,7 +32,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
         {user ? <Link to={`/profile/${user._id}`}>Profile</Link>: <Link to={`/dashboard`}>Profile</Link>}
       </li>
       <li>
-        <a onClick={logout} href="#!">
+        <a onClick={logoutHandler} href="#!">
           Logout
         </a>
       </li>
@@ -77,10 +84,13 @@ const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+  clearProfile: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, clearProfile })(Navbar);

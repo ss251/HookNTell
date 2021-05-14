@@ -5,7 +5,7 @@ import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
-import Map from "../layout/Map";
+import MapRedux from "../layout/MapRedux";
 import Footer from "../layout/Footer"
 
 import { getProfileById } from "../../actions/profile";
@@ -89,7 +89,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               {showMap === true ? (
                     
                     <Fragment>
-                      <Map/>
+                      <MapRedux/>
                     </Fragment>
                   
                 

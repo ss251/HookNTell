@@ -1,14 +1,24 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addCatches } from "../../actions/profile";
+import { addCatches, addCoordinates } from "../../actions/profile";
 import emailjs from "emailjs-com";
 import axios from "axios";
+import Geocode from "react-geocode";
+import {getCurrentProfile} from "../../actions/profile";
+
+Geocode.setApiKey("AIzaSyAUnKPar-4YiTMrmjzVTq-EBCV8dslmXWQ");
+
+Geocode.setLanguage("en");
+
+Geocode.setLocationType("ROOFTOP");
+
+Geocode.enableDebug();
 
 const endpoint = "http://localhost:3000/api/s3/upload";
 
-const AddCatch = ({ auth, addCatches, history }) => {
+const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentProfile }) => {
   const [formData, setFormData] = useState({
     img: "",
     lat: "",
@@ -44,6 +54,10 @@ const AddCatch = ({ auth, addCatches, history }) => {
     crabskept,
     notes,
   } = formData;
+
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
   function sendEmail(e) {
     e.preventDefault();
@@ -435,7 +449,16 @@ const AddCatch = ({ auth, addCatches, history }) => {
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
-          //sendEmail(e);
+          Geocode.fromAddress(location).then(
+            (response) => {
+              const { lat1, lng1 } = response.results[0].geometry.location;
+              addCoordinates(formData, history)
+            },
+            (error) => {
+              console.error(error);
+            }
+          );
+          sendEmail(e);
           addCatches(formData, history);
         }}
       >
@@ -475,10 +498,14 @@ const AddCatch = ({ auth, addCatches, history }) => {
 AddCatch.propTypes = {
   auth: PropTypes.object.isRequired,
   addCatches: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  addCoordinates: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { addCatches })(AddCatch);
+export default connect(mapStateToProps, { addCatches, addCoordinates, getCurrentProfile })(AddCatch);

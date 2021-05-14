@@ -159,12 +159,19 @@ const ProfileForm = ({
         )}
 
         <input type="submit" className="btn btn-primary my-1" />
-        <Link
+        {profile ? <Link
           className="btn btn-light my-1"
           to={`/profile/${profile.user._id}`}
         >
           Go Back
-        </Link>
+        </Link>:
+        <Link
+        className="btn btn-light my-1"
+        to={`/dashboard`}
+      >
+        Go Back
+      </Link>}
+        
       </form>
     </Fragment>
   );

@@ -69,11 +69,13 @@ function Map() {
         },
         geometry: {
           type: "Point",
-          coordinates: [-120.4544591516004, 46.75904739681614],
+          coordinates: [-122.4544591516004, 47.75904739681614],
         },
       },
     ],
   };
+
+  console.log(data)
 
   return (
     <section className="map">
