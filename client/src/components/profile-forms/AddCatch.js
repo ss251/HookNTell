@@ -18,11 +18,11 @@ Geocode.enableDebug();
 
 const endpoint = "http://localhost:3000/api/s3/upload";
 
-const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentProfile }) => {
+const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile}, getCurrentProfile }) => {
   const [formData, setFormData] = useState({
     img: "",
-    lat: "",
-    lng: "",
+    lat: 0.0,
+    lng: 0.0,
     fishtype: "",
     areacode: "",
     species: "",
@@ -77,6 +77,21 @@ const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentPro
           console.log(error.text);
         }
       );
+  }
+  const onLocationChange = (e) => {
+  try {
+  e.preventDefault()
+  let res = async () => {Geocode.fromAddress(location)
+    let {lat1, lng1} = await Promise.all(res.results[0].geometry.location)
+    setFormData({ ...formData, [lat]: lat1 });
+    setFormData({ ...formData, [lng]: lng1 });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+     console.log(lat1)
+  }
+  }
+  catch(error) {
+    console.log("not able to upload coordinates")
+  }
   }
 
   const onChange = (e) =>
@@ -142,7 +157,7 @@ const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentPro
                 placeholder="* Location"
                 name="location"
                 value={location}
-                onChange={onChange}
+                onChange={onLocationChange}
               />
             </div>
             <div className="form-group">
@@ -448,17 +463,24 @@ const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentPro
       <form
         className="form"
         onSubmit={(e) => {
+          try {
           e.preventDefault();
-          Geocode.fromAddress(location).then(
-            (response) => {
-              const { lat1, lng1 } = response.results[0].geometry.location;
               addCoordinates(formData, history)
-            },
-            (error) => {
-              console.error(error);
-            }
-          );
-          sendEmail(e);
+          }
+        catch(err) {
+          console.log("Error fetching geodata:", err);
+        }
+          //.then(
+          //   (response) => {
+          //     var { lat1, lng1 } = await Promise.all(response.results[0].geometry.location)
+          //     setFormData({ ...formData, lat:lat1, lng:lng1 });
+          //     addCoordinates(formData, history)
+          //   },
+          //   (error) => {
+          //     console.error(error);
+          //   }
+          // );
+          //sendEmail(e);
           addCatches(formData, history);
         }}
       >
@@ -495,6 +517,7 @@ const AddCatch = ({ auth, addCatches, history, profile: {profile}, getCurrentPro
   );
 };
 
+
 AddCatch.propTypes = {
   auth: PropTypes.object.isRequired,
   addCatches: PropTypes.func.isRequired,
@@ -508,4 +531,4 @@ const mapStateToProps = (state) => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { addCatches, addCoordinates, getCurrentProfile })(AddCatch);
+export default connect(mapStateToProps, { addCatches, addCoordinates, getCurrentProfile })(AddCatch)

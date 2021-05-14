@@ -6,6 +6,7 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
 import MapRedux from "../layout/MapRedux";
+import Map from "../layout/MapRedux";
 import Footer from "../layout/Footer"
 
 import { getProfileById } from "../../actions/profile";
@@ -89,7 +90,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               {showMap === true ? (
                     
                     <Fragment>
-                      <MapRedux/>
+                      <Map/>
                     </Fragment>
                   
                 
@@ -98,7 +99,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
           </div>
         </Fragment>
       )}
-      <Footer/>
+      {setShowCatches == false && setShowMap == false || auth.loading === true || profile === null ? <Footer style={{"margin-top": "8rem"}}/>: <Footer/>}
+      
     </Fragment>
     
   );

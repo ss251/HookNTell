@@ -11,8 +11,7 @@ function coordinateGen (catches) {
 
     Geocode.enableDebug();
 
-    const TOKEN =
-    "pk.eyJ1Ijoia3lsZXMzMiIsImEiOiJja25wc2lyZGwwNTIzMzFtdnAzZzl6NjJhIn0.658oMKu-TbFxCBT1ui8mzQ";
+    
 
     var features = []
 

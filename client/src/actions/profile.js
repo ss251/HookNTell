@@ -211,7 +211,7 @@ export const addCatches = (formData, history) => async (dispatch) => {
 
 export const addCoordinates = (formData, history) => async (dispatch) => {
   try {
-    const res = await api.put("/profile/catch/latlng", formData);
+    const res = await api.post("/profile/catch/latlng", formData);
 
     dispatch({
       type: UPDATE_PROFILE,
