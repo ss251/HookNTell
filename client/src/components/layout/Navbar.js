@@ -6,7 +6,7 @@ import { logout } from "../../actions/auth";
 import logo from "../../img/Logo.png";
 import logo2 from "../../img/Logo2.png";
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, user }, logout }) => {
   const authLinks = (
     <ul>
       {/*<li>
@@ -22,7 +22,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         <Link to="/posts">Posts</Link>
       </li> */}
       <li>
-        <Link to="/dashboard">Profile</Link>
+        {user ? <Link to={`/profile/${user._id}`}>Profile</Link>: <Link to={`/dashboard`}>Profile</Link>}
       </li>
       <li>
         <a onClick={logout} href="#!">
