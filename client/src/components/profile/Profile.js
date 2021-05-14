@@ -7,7 +7,7 @@ import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
 import MapRedux from "../layout/MapRedux";
 import Map from "../layout/MapRedux";
-import Footer from "../layout/Footer"
+import Footer from "../layout/Footer";
 
 import { getProfileById } from "../../actions/profile";
 
@@ -18,17 +18,17 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 
   const [showCatches, setShowCatches] = React.useState(true);
 
-  const handleCatches = () => {
-   
-    setShowMap(false)
+  const handleCatches = (e) => {
+    e.preventDefault();
+    setShowMap(false);
     setShowCatches(!showCatches);
   };
 
   const [showMap, setShowMap] = React.useState(false);
 
-  const handleMap = () => {
-    
-    setShowCatches(false)
+  const handleMap = (e) => {
+    e.preventDefault();
+    setShowCatches(false);
     setShowMap(!showMap);
   };
 
@@ -39,40 +39,46 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       ) : (
         <Fragment>
           <div className="profile-flex">
-            
             <ProfileTop
               profile={profile}
               edit={auth.isAuthenticated && auth.loading === false}
             ></ProfileTop>
-            
+
             <div className="profile-show-catches">
-            {showCatches === true ? <button
-                style={{color: "#f7a072"}}
-                className="btn btn-light show-catches"
-                onClick={handleCatches}
-              >
-                My Catches
-              </button> : <button
-                style={{color: "#0f6a79"}}
-                className="btn btn-light show-catches"
-                onClick={handleCatches}
-              >
-                My Catches
-              </button>}
-              {showMap === true ? <button
-                style={{color: "#f7a072"}}
-                className="btn btn-light show-map"
-                onClick={handleMap}
-              >
-                My Map
-              </button>: <button
-                style={{color: "#0f6a79"}}
-                className="btn btn-light show-map"
-                onClick={handleMap}
-              >
-                My Map
-              </button>}
-              
+              {showCatches === true ? (
+                <button
+                  style={{ color: "#f7a072" }}
+                  className="btn btn-light show-catches"
+                  onClick={handleCatches}
+                >
+                  My Catches
+                </button>
+              ) : (
+                <button
+                  style={{ color: "#0f6a79" }}
+                  className="btn btn-light show-catches"
+                  onClick={handleCatches}
+                >
+                  My Catches
+                </button>
+              )}
+              {showMap === true ? (
+                <button
+                  style={{ color: "#f7a072" }}
+                  className="btn btn-light show-map"
+                  onClick={handleMap}
+                >
+                  My Map
+                </button>
+              ) : (
+                <button
+                  style={{ color: "#0f6a79" }}
+                  className="btn btn-light show-map"
+                  onClick={handleMap}
+                >
+                  My Map
+                </button>
+              )}
             </div>
             <ProfileAbout profile={profile} />
             <div className="catch-container">
@@ -88,21 +94,22 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             </div>
             <div className="map-container">
               {showMap === true ? (
-                    
-                    <Fragment>
-                      <Map/>
-                    </Fragment>
-                  
-                
+                <Fragment>
+                  <Map />
+                </Fragment>
               ) : null}
             </div>
           </div>
         </Fragment>
       )}
-      {setShowCatches == false && setShowMap == false || auth.loading === true || profile === null ? <Footer style={{"margin-top": "8rem"}}/>: <Footer/>}
-      
+      {(setShowCatches == false && setShowMap == false) ||
+      auth.loading === true ||
+      profile === null ? (
+        <Footer style={{ "margin-top": "8rem" }} />
+      ) : (
+        <Footer />
+      )}
     </Fragment>
-    
   );
 };
 
