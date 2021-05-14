@@ -6,6 +6,7 @@ import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
 import Map from "../layout/Map";
+import Footer from "../layout/Footer"
 
 import { getProfileById } from "../../actions/profile";
 
@@ -16,16 +17,16 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
 
   const [showCatches, setShowCatches] = React.useState(true);
 
-  const handleCatches = (e) => {
-    e.preventDefault();
+  const handleCatches = () => {
+   
     setShowMap(false)
     setShowCatches(!showCatches);
   };
 
   const [showMap, setShowMap] = React.useState(false);
 
-  const handleMap = (e) => {
-    e.preventDefault();
+  const handleMap = () => {
+    
     setShowCatches(false)
     setShowMap(!showMap);
   };
@@ -44,25 +45,27 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
             ></ProfileTop>
             
             <div className="profile-show-catches">
-            {showCatches ? <button
+            {showCatches === true ? <button
                 style={{color: "#f7a072"}}
                 className="btn btn-light show-catches"
                 onClick={handleCatches}
               >
                 My Catches
               </button> : <button
+                style={{color: "#0f6a79"}}
                 className="btn btn-light show-catches"
                 onClick={handleCatches}
               >
                 My Catches
               </button>}
-              {showMap ? <button
+              {showMap === true ? <button
                 style={{color: "#f7a072"}}
                 className="btn btn-light show-map"
                 onClick={handleMap}
               >
                 My Map
               </button>: <button
+                style={{color: "#0f6a79"}}
                 className="btn btn-light show-map"
                 onClick={handleMap}
               >
@@ -83,8 +86,8 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               ) : null}
             </div>
             <div className="map-container">
-              {showMap ? (
-                
+              {showMap === true ? (
+                    
                     <Fragment>
                       <Map/>
                     </Fragment>
@@ -95,7 +98,9 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
           </div>
         </Fragment>
       )}
+      <Footer/>
     </Fragment>
+    
   );
 };
 

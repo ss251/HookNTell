@@ -52,7 +52,7 @@ img {
   overflow: hidden;
   padding: 0 2rem;
   margin-top: 2rem;
-  margin-bottom: 10rem;
+  margin-bottom: 5rem;
 }
 
 .location img {
@@ -139,7 +139,7 @@ img {
   position: relative;
   left: 0.5rem;
   
-  overflow:auto;
+  overflow:hidden;
 }
 
 .add-catch {
@@ -512,6 +512,12 @@ button {
 
 .navbar ul {
   display: flex;
+
+}
+
+.signin-nav {
+  width: 100%;
+  z-index: 1;
 }
 
 .navbar a {
@@ -829,11 +835,9 @@ footer {
   background-color: white;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1100px;
   padding: 0 2rem;
   width: 100%;
   bottom: 0;
-  position: fixed;
 }
 
 /* .footerCon {
@@ -1003,6 +1007,7 @@ footer {
   align-items: flex-start;
   margin-left: 1.5rem;
   margin-top: 0.5rem;
+  padding-right: 1.5rem;
 }
 
 .profile-basic {
@@ -1019,6 +1024,7 @@ footer {
   text-align: left;
   margin-top: 0.2rem;
   max-width: 30rem;
+  padding-bottom: 2rem;
 }
 
 .profile-features {
@@ -1050,6 +1056,7 @@ footer {
 }
 
 .bg-profile {
+  
   flex-direction: row;
   max-height: 200px;
   margin-right: 9.5rem;
@@ -1120,7 +1127,7 @@ div.profile-grid.my-1 {
   margin-left: 10rem;
   margin-right: 10rem;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.2rem;
 }
 
 #root > div > div.profile-show-catches > button {
@@ -1196,6 +1203,10 @@ p.card-text {
   padding: 0.5rem;
 }
 
+.profile-catch > div:last-child {
+  margin-bottom: 0;
+}
+
 
 /* Posts Page */
 .post-form .post-form-header {
@@ -1233,3 +1244,135 @@ p.card-text {
 }
 
 
+/* Mobile Styles */
+@media (max-width: 700px) {
+  .container {
+    margin-top: 8rem;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  /* Text Styles */
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .large {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* Navbar */
+
+  .navbar ul {
+    text-align: center;
+    justify-content: center;
+  }
+
+  
+  /* Profiles Page */
+  
+  .profile {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .profile ul {
+    display: none;
+  }
+
+  .profile-show-catches {
+    margin-top: 8rem;
+  }
+
+  .profile-info {
+    padding-right: 2rem;
+  }
+
+  .profile-catch {
+    display: flex;
+    width: auto;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    flex-direction: column;
+    border: 0px;
+    background-color: inherit;
+  }
+
+  .profile-display {
+    flex-direction: row;
+    margin-top: -5rem;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+
+  .profile-features {
+    display:flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-right: 1rem;
+    width: auto;
+  }
+
+  .bg-profile {
+    display: flex;
+    flex-direction: column;
+    max-height: none;
+    margin-right: 0;
+    margin-top: -2rem;
+    margin-bottom: 0;
+  }
+
+  #root > div > div.profile-top.p-2 > div > div.bg-profile > a > img {
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Profile Page */
+
+  div.profile-about.bg-light.p-2 {
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+  #root > div > div.profile-top.p-2 > div > div.bg-profile > div > div.profile-features > a.btn.btn-light.add-catch {
+    width: 2.9rem;
+    overflow: hidden;
+  }
+
+  #root > div > div.profile-top.p-2 > div > div.bg-profile > div > div.profile-features > a.btn.btn-light.edit-profile {
+    width: 5rem;
+    overflow: hidden;
+  }
+
+  #root > div > div.profile-show-catches > button.btn.btn-light.show-catches {
+    font-size: 200%;
+  }
+
+  #root > div > div.profile-show-catches > button.btn.btn-light.show-map {
+    font-size: 200%;
+  }
+
+  .dash-buttons a {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+
+  .post {
+    grid-template-columns: 1fr;
+  }
+  .post a,
+  .post button {
+    padding: 0.3rem 0.4rem;
+  }
+}
+
+/* random
+*/

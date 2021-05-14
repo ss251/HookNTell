@@ -35,6 +35,9 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
+        <a style={{"color": "transparent"}}>About</a>
+      </li>
+      <li>
         <Link to="/about">About</Link>
       </li>
       <li>
@@ -46,8 +49,8 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       </li>*/}
 
       <li>
-        <Link className="signin-nav" to="/login">
-          Sign In
+        <Link to="/login" >
+          Login
         </Link>
       </li>
     </ul>
