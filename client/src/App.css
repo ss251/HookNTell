@@ -838,6 +838,7 @@ footer {
   padding: 0 2rem;
   width: 100%;
   bottom: 0;
+  overflow: hidden;
 }
 
 /* .footerCon {
@@ -872,6 +873,7 @@ footer {
     margin-right: auto;
     width: 70%;
     padding: 0 2rem;
+    overflow: hidden;
   }
   
 }
@@ -902,6 +904,7 @@ footer {
     margin-right: auto;
     width: 85%;
     padding: 0 2rem;
+    overflow: hidden;
   }
 }
 
@@ -912,6 +915,7 @@ footer {
     justify-content: space-around;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
   }
   
   .flex .middle {
