@@ -574,6 +574,10 @@ button {
   flex-direction: row;
 }
 
+#root > footer > div > div > div {
+  margin-top: 0;
+}
+
 /* This is the flex betweent he picture and text box that makes them columns and even  */
 .upper-section {
   padding: 2% 0;
@@ -846,7 +850,9 @@ footer {
   padding: 0 2rem;
   width: 100%;
   bottom: 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  max-height: 8rem;
 }
 
 /* .footerCon {
@@ -1004,6 +1010,7 @@ footer {
 .profile-flex {
   display: flex;
   flex-direction: column;
+  margin-bottom: 14rem;
 }
 
 .profile-top {

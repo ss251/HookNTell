@@ -47,7 +47,7 @@ img {
 }
 
 .map-container {
-  width: 80%;
+  width: 85%;
   margin-bottom: 4rem;
   margin-top: 2rem;
   margin-left: auto;
@@ -115,7 +115,7 @@ img {
 }
 
 .home1 {
-  width: 10%;
+  width: 15%;
   height: 60%;
   position: relative;
   top: 0.2rem;
@@ -447,12 +447,7 @@ button {
     margin-top: 1.6rem;
   }
   .map-container {
-    width: none;
-  }
-  .map {
-    background-color: #f2f2f2;
-    padding: 3rem;
-    margin-bottom: 2rem;
+    width: 100%;
   }
 }
 
@@ -464,7 +459,7 @@ button {
   }
 
   .map-container {
-    width: none;
+    width: 100%;
   }
 
   .navbar a {
@@ -579,6 +574,10 @@ button {
   flex-direction: row;
 }
 
+#root > footer > div > div > div {
+  margin-top: 0;
+}
+
 /* This is the flex betweent he picture and text box that makes them columns and even  */
 .upper-section {
   padding: 2% 0;
@@ -604,6 +603,7 @@ button {
 .info-page-image img {
   width: 80%;
   float: right;
+  margin-top: 2.7rem;
 }
 
 .title-info-page {
@@ -620,8 +620,10 @@ button {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   max-width: 325px;
+  max-width: 450px;
   margin-top: 1.2rem;
   font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .boxes .report {
@@ -694,7 +696,7 @@ button {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #0f6a79;
   margin-top: -0.5rem;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
 
 .boxes {
@@ -848,7 +850,9 @@ footer {
   padding: 0 2rem;
   width: 100%;
   bottom: 0;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  max-height: 8rem;
 }
 
 /* .footerCon {
@@ -947,6 +951,15 @@ footer {
   footerCon {
     max-height: 5rem;
   }
+
+  .landing-fisher {
+    color: #fff;
+    margin: 0%;
+    font-size: 5rem;
+    font-weight: 200;
+    position: relative;
+    width: 50%;
+  }
 }
 
 /*
@@ -997,6 +1010,7 @@ footer {
 .profile-flex {
   display: flex;
   flex-direction: column;
+  margin-bottom: 14rem;
 }
 
 .profile-top {
@@ -1156,7 +1170,7 @@ div.profile-grid.my-1 {
   white-space: nowrap;
   font-size: 2.8rem;
   text-transform: capitalize;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   color: var(--primary-color);
   background: transparent;
   border: 0;
@@ -1188,6 +1202,10 @@ div.profile-grid.my-1 {
   margin-left: auto;
   margin-right: auto;
   background: inherit;
+}
+
+.card:first-child {
+  margin-top: 2rem;
 }
 
 .card-title {
@@ -1304,7 +1322,7 @@ p.card-text {
   }
 
   .profile-show-catches {
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 
   .profile-info {
@@ -1388,6 +1406,7 @@ p.card-text {
 
   #root > div > div.profile-show-catches > button.btn.btn-light.show-map {
     font-size: 200%;
+    font-family: Roboto, sans-serif;
   }
 
   .dash-buttons a {
