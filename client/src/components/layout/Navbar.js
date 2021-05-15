@@ -7,12 +7,16 @@ import { clearProfile } from "../../actions/profile";
 import logo from "../../img/Logo.png";
 import logo2 from "../../img/Logo2.png";
 
-const Navbar = ({ auth: { isAuthenticated, user }, profile: { profile }, clearProfile, logout }) => {
-
+const Navbar = ({
+  auth: { isAuthenticated, user },
+  profile: { profile },
+  clearProfile,
+  logout,
+}) => {
   const logoutHandler = () => {
     logout();
     clearProfile();
-  }
+  };
 
   const authLinks = (
     <ul>
@@ -29,7 +33,11 @@ const Navbar = ({ auth: { isAuthenticated, user }, profile: { profile }, clearPr
         <Link to="/posts">Posts</Link>
       </li> */}
       <li>
-        {user ? <Link to={`/profile/${user._id}`}>Profile</Link>: <Link to={`/dashboard`}>Profile</Link>}
+        {user ? (
+          <Link to={`/profile/${user._id}`}>Profile</Link>
+        ) : (
+          <Link to={`/dashboard`}>Profile</Link>
+        )}
       </li>
       <li>
         <a onClick={logoutHandler} href="#!">
@@ -42,7 +50,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, profile: { profile }, clearPr
   const guestLinks = (
     <ul>
       <li>
-        <a style={{"color": "transparent"}}>About</a>
+        <a style={{ color: "transparent" }}>About</a>
       </li>
       <li>
         <Link to="/about">About</Link>
@@ -56,9 +64,7 @@ const Navbar = ({ auth: { isAuthenticated, user }, profile: { profile }, clearPr
       </li>*/}
 
       <li>
-        <Link to="/login" >
-          Login
-        </Link>
+        <Link to="/login">Login</Link>
       </li>
     </ul>
   );
@@ -85,12 +91,12 @@ Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
-  clearProfile: PropTypes.func.isRequired
+  clearProfile: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
 });
 
 export default connect(mapStateToProps, { logout, clearProfile })(Navbar);

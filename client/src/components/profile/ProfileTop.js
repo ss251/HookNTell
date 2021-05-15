@@ -4,11 +4,11 @@ import { Link, withRouter } from "react-router-dom";
 import coverpicture from "../../img/coverimage.jpeg";
 import { connect } from "react-redux";
 import { uploadProfileImg, uploadProfileCover } from "../../actions/profile";
-import home1 from "../../img/home1.png"
-import info1 from "../../img/info-button.png"
+import home1 from "../../img/home1.png";
+import info1 from "../../img/info-button.png";
 
 const ProfileTop = ({
-  uploadProfileImg, 
+  uploadProfileImg,
   uploadProfileCover,
   history,
   profile: {
@@ -51,16 +51,24 @@ const ProfileTop = ({
     }
   );
 
-
   return (
     <div className="profile-top p-2">
       <div className="profile-images">
         <div className="bg-cover">
-        {edit && (<Link to=""><img className="cover-img" onClick={() => {
-            myWidget2.open();
-          }} src={cover === "" ? coverpicture : cover} alt="" /></Link>)}
+          {edit && (
+            <Link to="">
+              <img
+                className="cover-img"
+                onClick={() => {
+                  myWidget2.open();
+                }}
+                src={cover === "" ? coverpicture : cover}
+                alt=""
+              />
+            </Link>
+          )}
         </div>
-        
+
         <div className="bg-profile">
           {edit && (
             <Link to="">
@@ -74,36 +82,33 @@ const ProfileTop = ({
               />
             </Link>
           )}
-        <div className="profile-display">
-        <div className="profile-info">
-        <h1 className="large">{name}</h1>
-        <div className="profile-basic">
-        <img className="home1" src={home1}></img>
-          {location ? (
-            <span className="location-profile">{location}</span>
-          ) : null}
-        </div>
-        <div className="profile-bio">
-        <img className="info1" src={info1}></img>
-          {bio ? (
-            <span className="bio-profile">{bio}</span>
-          ) : null}
-        </div>
-        </div>
-          <div className="profile-features">
-          <Link to="/add-catches" className="btn btn-light add-catch">
-            + Catch
-          </Link>
-          <Link to="/edit-profile" className="btn btn-light edit-profile">
-            Edit Profile
-          </Link>
-          </div>
+          <div className="profile-display">
+            <div className="profile-info">
+              <h1 className="large">{name}</h1>
+              <div className="profile-basic">
+                <img className="home1" src={home1}></img>
+                {location ? (
+                  <span className="location-profile">{location}</span>
+                ) : null}
+              </div>
+              <div className="profile-bio">
+                <img className="info1" src={info1}></img>
+                {bio ? <span className="bio-profile">{bio}</span> : null}
+              </div>
+            </div>
+            <div className="profile-features">
+              <Link to="/add-catches" className="btn btn-light add-catch">
+                + Catch
+              </Link>
+              <Link to="/edit-profile" className="btn btn-light edit-profile">
+                Edit Profile
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-      
-      
-        {/* {social
+
+      {/* {social
           ? Object.entries(social)
               .filter(([_, value]) => value)
               .map(([key, value]) => (
@@ -117,8 +122,6 @@ const ProfileTop = ({
                 </a>
               ))
           : null} */}
-        
-      
     </div>
   );
 };

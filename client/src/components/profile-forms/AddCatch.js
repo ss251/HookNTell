@@ -7,6 +7,7 @@ import emailjs from "emailjs-com";
 import axios from "axios";
 import Geocode from "react-geocode";
 import { getCurrentProfile } from "../../actions/profile";
+import { Fade } from "react-awesome-reveal";
 
 Geocode.setApiKey("AIzaSyAUnKPar-4YiTMrmjzVTq-EBCV8dslmXWQ");
 
@@ -23,7 +24,6 @@ const AddCatch = ({
   addCatches,
   addCoordinates,
   history,
-  profile: { profile },
   getCurrentProfile,
 }) => {
   const [formData, setFormData] = useState({
@@ -55,7 +55,6 @@ const AddCatch = ({
     location,
     weight,
     length,
-    habitat,
     cliptype,
     chartertype,
     crabskept,
@@ -467,60 +466,63 @@ const AddCatch = ({
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Report Catch</h1>
-      <small>* = required field</small>
-      <form
-        className="form"
-        onSubmit={(e) => {
-          try {
-            e.preventDefault();
-            addCoordinates(formData, history);
-          } catch (err) {
-            console.log("Error fetching geodata:", err);
-          }
-          //.then(
-          //   (response) => {
-          //     var { lat1, lng1 } = await Promise.all(response.results[0].geometry.location)
-          //     setFormData({ ...formData, lat:lat1, lng:lng1 });
-          //     addCoordinates(formData, history)
-          //   },
-          //   (error) => {
-          //     console.error(error);
-          //   }
-          // );
-          //sendEmail(e);
-          addCatches(formData, history);
-        }}
-      >
-        <div className="form-group-select">
-          <select
-            className="form-group-select"
-            name="fishtype"
-            value={fishtype}
-            onChange={changeSelectOptionHandler}
-          >
-            <option>* Select Catch</option>
-            <option value="Salmon">Salmon</option>
-            <option value="Sturgeon">Sturgeon</option>
-            <option value="Halibut">Halibut</option>
-            <option value="Steelhead">Steelhead</option>
-            <option value="Dungeness Crab">Dungeness Crab</option>
-          </select>
-        </div>
-        {renderSelectedForm(formData.fishtype)}
-        {auth.isAuthenticated && auth.loading === false && (
-          <Link to="/catch/img">
-            <button type="submit" className="btn btn-primary">
-              Upload Image
-            </button>
-          </Link>
-        )}
+      <Fade>
+        <h1 className="large text-primary">Report Catch</h1>
+        <small>* = required field</small>
+        <form
+          className="form"
+          onSubmit={(e) => {
+            try {
+              e.preventDefault();
+              addCoordinates(formData, history);
+            } catch (err) {
+              console.log("Error fetching geodata:", err);
+            }
+            //.then(
+            //   (response) => {
+            //     var { lat1, lng1 } = await Promise.all(response.results[0].geometry.location)
+            //     setFormData({ ...formData, lat:lat1, lng:lng1 });
+            //     addCoordinates(formData, history)
+            //   },
+            //   (error) => {
+            //     console.error(error);
+            //   }
+            // );
+            //sendEmail(e);
+            addCatches(formData, history);
+          }}
+        >
+          <div className="form-group-select">
+            <select
+              className="form-group-select"
+              name="fishtype"
+              value={fishtype}
+              onChange={changeSelectOptionHandler}
+            >
+              <option>* Select Catch</option>
+              <option value="Salmon">Salmon</option>
+              <option value="Sturgeon">Sturgeon</option>
+              <option value="Halibut">Halibut</option>
+              <option value="Steelhead">Steelhead</option>
+              <option value="Dungeness Crab">Dungeness Crab</option>
+            </select>
+          </div>
 
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to={`/profile/${auth.user._id}`}>
-          Go Back
-        </Link>
-      </form>
+          {renderSelectedForm(formData.fishtype)}
+          {auth.isAuthenticated && auth.loading === false && (
+            <Link to="/catch/img">
+              <button type="submit" className="btn btn-primary">
+                Upload Image
+              </button>
+            </Link>
+          )}
+
+          <input type="submit" className="btn btn-primary my-1" />
+          <Link className="btn btn-light my-1" to={`/profile/${auth.user._id}`}>
+            Go Back
+          </Link>
+        </form>
+      </Fade>
     </Fragment>
   );
 };

@@ -7,6 +7,7 @@ import ProfileAbout from "./ProfileAbout";
 import Catch from "../dashboard/Catch";
 import Map from "../layout/MapRedux";
 import Footer from "../layout/Footer";
+import { Fade } from "react-awesome-reveal";
 
 import { getProfileById } from "../../actions/profile";
 
@@ -38,11 +39,12 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       ) : (
         <Fragment>
           <div className="profile-flex">
-            <ProfileTop
-              profile={profile}
-              edit={auth.isAuthenticated && auth.loading === false}
-            ></ProfileTop>
-
+            <Fade triggerOnce duration={2000}>
+              <ProfileTop
+                profile={profile}
+                edit={auth.isAuthenticated && auth.loading === false}
+              ></ProfileTop>
+            </Fade>
             <div className="profile-show-catches">
               {showCatches === true ? (
                 <button
@@ -80,17 +82,21 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               )}
             </div>
             <ProfileAbout profile={profile} />
+
             <div className="catch-container">
-              {showCatches ? (
-                <div className="profile-catch bg-white p-2">
-                  {profile.catches.length > 0 ? (
-                    <Fragment>
-                      <Catch catches={profile.catches} />
-                    </Fragment>
-                  ) : null}
-                </div>
-              ) : null}
+              <Fade>
+                {showCatches ? (
+                  <div className="profile-catch bg-white p-2">
+                    {profile.catches.length > 0 ? (
+                      <Fragment>
+                        <Catch catches={profile.catches} />
+                      </Fragment>
+                    ) : null}
+                  </div>
+                ) : null}
+              </Fade>
             </div>
+
             <div className="map-container">
               {showMap === true ? (
                 <Fragment>

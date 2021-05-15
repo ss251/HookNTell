@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import MapGL, {
-    Source,
-    Layer,
-    NavigationControl,
-    ScaleControl
-}  from '@urbica/react-map-gl';
+  Source,
+  Layer,
+  NavigationControl,
+  ScaleControl,
+} from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import location from "../../img/location.png"; 
+import location from "../../img/location.png";
+import { Fade } from "react-awesome-reveal";
 // import { Container } from "react-bootstrap";
 
 const TOKEN =
@@ -20,20 +21,20 @@ function Map() {
     longitude: -120.457,
     zoom: 11,
   });
-  
+
   // const onChange = (event) => {
   //   setViewportChangeMethod(event.target.value);
   // };
-  
+
   const onClick = (event) => {
     const { lngLat } = event;
-  
+
     const newVewport = {
       ...viewport,
       latitude: lngLat.lat,
-      longitude: lngLat.lng
+      longitude: lngLat.lng,
     };
-  
+
     setViewport(newVewport);
   };
 
@@ -75,43 +76,44 @@ function Map() {
     ],
   };
 
-  console.log(data)
+  console.log(data);
 
   return (
     <section className="map">
-      <div className="map-box">
-        <h1>
-          <div className="map-title">Catch Map</div>
-        </h1>
-        <div className="outer">
-          <div className="search">Searchbar Here </div>
+      <Fade>
+        <div className="map-box">
+          <h1>
+            <div className="map-title">Catch Map</div>
+          </h1>
+          <div className="outer">
+            <div className="search">Searchbar Here </div>
+          </div>
+          <MapGL
+            style={{ width: "100%", height: "400px" }}
+            mapStyle="mapbox://styles/kyles32/cknpu9e1p65k417nqs991zxcd"
+            accessToken={TOKEN}
+            onClick={onClick}
+            latitude={viewport.latitude}
+            longitude={viewport.longitude}
+            zoom={viewport.zoom}
+            onViewportChange={setViewport}
+            //viewportChangeMethod={viewportChangeMethod}
+          >
+            <Source id="points" type="geojson" data={data} />
+            <Layer
+              id="points"
+              type="circle"
+              source="points"
+              paint={{
+                "circle-radius": 5,
+                "circle-color": "#1978c8",
+              }}
+            />
+            <NavigationControl showCompass showZoom position="top-right" />
+            <ScaleControl unit="metric" position="bottom-right" />
+          </MapGL>
         </div>
-        <MapGL
-          style={{ width: "100%", height: "400px" }}
-          mapStyle="mapbox://styles/kyles32/cknpu9e1p65k417nqs991zxcd"
-          accessToken={TOKEN}
-          onClick={onClick}
-          latitude={viewport.latitude}
-          longitude={viewport.longitude}
-          zoom={viewport.zoom}
-          onViewportChange={setViewport}
-          //viewportChangeMethod={viewportChangeMethod}
-        >
-          <Source id="points" type="geojson" data={data} />
-          <Layer
-            id="points"
-            type="circle"
-            source="points"
-            paint={{
-              "circle-radius": 5,
-              "circle-color": "#1978c8",
-            }}
-          />
-          <NavigationControl showCompass showZoom position="top-right" />
-          <ScaleControl unit='metric' position='bottom-right' />
-        </MapGL>
-
-      </div>
+      </Fade>
       <div className="data-box">
         <h4>
           <div className="catch-title">Catch Data</div>
@@ -123,7 +125,7 @@ function Map() {
               <img src={location} />
             </div>
           </div>
-          <div className="catch-data">            
+          <div className="catch-data">
             <div className="catch-date">Caught 4/3/20</div>
             <div className="weight">15 pounds</div>
             <div className="length">17 inches</div>
@@ -137,15 +139,14 @@ function Map() {
               <img src={location} />
             </div>
           </div>
-          <div className="catch-data">            
+          <div className="catch-data">
             <div className="catch-date">Caught 3/7/20</div>
             <div className="weight">7 pounds</div>
             <div className="length">12 inches</div>
-            <div className="location">Yakima River, WA</div>      
+            <div className="location">Yakima River, WA</div>
           </div>
         </div>
       </div>
-      
     </section>
   );
 }

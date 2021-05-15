@@ -6,6 +6,7 @@ import connect from "../../img/connect.png";
 import find from "../../img/find.png";
 import Footer from "./Footer";
 import { Fragment } from "react";
+import { Fade } from "react-awesome-reveal";
 
 class about extends Component {
   render() {
@@ -17,23 +18,26 @@ class about extends Component {
               <h1>
                 <div className="title-info-page">ABOUT US</div>
               </h1>
-              <div className="description-info-page">
-                <p>
-                  Hook and Tell is a project created through the University of
-                  Wasington's Information School. This idea started because two
-                  of our group members, who are fisherman themselves, noticed
-                  how inconvenient it was to report fish catches. To combat this
-                  we have created a digital solution which emails the state
-                  catch information, rather than using the original process of
-                  mailing in a paper catch card. Our solution provides easy
-                  reporting to imbetter fisherman and the Fish and Wildlife
-                  Department, as well as it provides the under recognized
-                  community of Fisherman a digital community. Last, and most
-                  importantly, with the increase in data collection on fish will
-                  allow for Washington State to better monitor fish species
-                  resulting in saving our fish and wildlife.
-                </p>
-              </div>
+
+              <Fade>
+                <div className="description-info-page">
+                  <p>
+                    Hook and Tell is a project created through the University of
+                    Wasington's Information School. This idea started because
+                    two of our group members, who are fisherman themselves,
+                    noticed how inconvenient it was to report fish catches. To
+                    combat this we have created a digital solution which emails
+                    the state catch information, rather than using the original
+                    process of mailing in a paper catch card. Our solution
+                    provides easy reporting to imbetter fisherman and the Fish
+                    and Wildlife Department, as well as it provides the under
+                    recognized community of Fisherman a digital community. Last,
+                    and most importantly, with the increase in data collection
+                    on fish will allow for Washington State to better monitor
+                    fish species resulting in saving our fish and wildlife.
+                  </p>
+                </div>
+              </Fade>
             </div>
             <div className="info-page-image">
               <img src={about1} alt="This a person fishing in a river" />
@@ -42,29 +46,29 @@ class about extends Component {
 
           <div className="flex">
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
             <div className="lilfish">
-              <img src={lilfish} />
+              <img src={lilfish} alt="littlefish" />
             </div>
           </div>
 
           <div className="flex1">
             <div className="boxes">
               <div className="report">
-                <img src={report} />
+                <img src={report} alt="report-feature" />
               </div>
               <div className="report1">
                 <h2>REPORT</h2>
@@ -80,7 +84,7 @@ class about extends Component {
 
             <div className="boxes">
               <div className="connect">
-                <img src={connect} />
+                <img src={connect} alt="connect-feature" />
               </div>
 
               <div className="connect1">
