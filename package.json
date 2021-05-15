@@ -1,0 +1,62 @@
+{
+  "name": "hookntell",
+  "version": "1.0.0",
+  "description": "Group Members: Ashray Silval, Kendall Marshall, Kyle Stevens, Sailesh Sivakumar",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "engines": {
+    "node": "15.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ss251/HookNTell.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ss251/HookNTell/issues"
+  },
+  "homepage": "https://github.com/ss251/HookNTell#readme",
+  "dependencies": {
+    "@urbica/react-map-gl": "^1.14.2",
+    "aws-sdk": "^2.896.0",
+    "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.6.0",
+    "cloudinary": "^1.25.1",
+    "concurrently": "^6.0.2",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.10.0",
+    "gravatar": "^1.8.1",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mapbox-gl": "^2.2.0",
+    "mongoose": "^5.11.18",
+    "multer": "^1.4.2",
+    "normalize-url": "^1.9.1",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "react-bootstrap": "^1.5.2",
+    "react-dropzone": "^11.3.2",
+    "react-geocode": "^0.2.3",
+    "react-map-gl": "^6.1.12",
+    "react-modal": "^3.13.1",
+    "react-redux": "^7.2.2",
+    "redux-devtools-extension": "^2.13.9",
+    "superagent": "^6.1.0",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
