@@ -924,6 +924,7 @@ footer {
     overflow: hidden;
   }
 
+<<<<<<< HEAD
   .landing-fisher {
     color: #fff;
     margin-left: 5rem;
@@ -934,6 +935,8 @@ footer {
     position: relative;
   }
 
+=======
+>>>>>>> f2a51daec254e1e9b07d931d5a09d866ea747ac5
   .flex .middle {
     display: none;
   }
