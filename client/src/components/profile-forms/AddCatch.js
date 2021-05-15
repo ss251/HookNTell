@@ -6,7 +6,7 @@ import { addCatches, addCoordinates } from "../../actions/profile";
 import emailjs from "emailjs-com";
 import axios from "axios";
 import Geocode from "react-geocode";
-import {getCurrentProfile} from "../../actions/profile";
+import { getCurrentProfile } from "../../actions/profile";
 
 Geocode.setApiKey("AIzaSyAUnKPar-4YiTMrmjzVTq-EBCV8dslmXWQ");
 
@@ -16,9 +16,16 @@ Geocode.setLocationType("ROOFTOP");
 
 Geocode.enableDebug();
 
-const endpoint = "http://localhost:3000/api/s3/upload";
+//const endpoint = "http://localhost:3000/api/s3/upload";
 
-const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile}, getCurrentProfile }) => {
+const AddCatch = ({
+  auth,
+  addCatches,
+  addCoordinates,
+  history,
+  profile: { profile },
+  getCurrentProfile,
+}) => {
   const [formData, setFormData] = useState({
     img: "",
     lat: 0.0,
@@ -79,20 +86,22 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
       );
   }
   const onLocationChange = (e) => {
-  try {
-  e.preventDefault()
-  let res = async () => {Geocode.fromAddress(location)
-    let {lat1, lng1} = await Promise.all(res.results[0].geometry.location)
-    setFormData({ ...formData, [lat]: lat1 });
-    setFormData({ ...formData, [lng]: lng1 });
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-     console.log(lat1)
-  }
-  }
-  catch(error) {
-    console.log("not able to upload coordinates")
-  }
-  }
+    try {
+      e.preventDefault();
+      let res = async () => {
+        Geocode.fromAddress(location);
+        let { lat1, lng1 } = await Promise.all(
+          res.results[0].geometry.location
+        );
+        setFormData({ ...formData, [lat]: lat1 });
+        setFormData({ ...formData, [lng]: lng1 });
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        console.log(lat1);
+      };
+    } catch (error) {
+      console.log("not able to upload coordinates");
+    }
+  };
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -101,13 +110,13 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const imgUploadImgHandler = (e) => {
-    e.preventDefault();
-    const data = new FormData(e.target);
-    axios.post(endpoint, data).then(() => {
-      this.props.history.push("/");
-    });
-  };
+  // const imgUploadImgHandler = (e) => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.target);
+  //   axios.post(endpoint, data).then(() => {
+  //     this.props.history.push("/");
+  //   });
+  // };
 
   const renderSelectedForm = (param) => {
     switch (param) {
@@ -464,12 +473,11 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
         className="form"
         onSubmit={(e) => {
           try {
-          e.preventDefault();
-              addCoordinates(formData, history)
+            e.preventDefault();
+            addCoordinates(formData, history);
+          } catch (err) {
+            console.log("Error fetching geodata:", err);
           }
-        catch(err) {
-          console.log("Error fetching geodata:", err);
-        }
           //.then(
           //   (response) => {
           //     var { lat1, lng1 } = await Promise.all(response.results[0].geometry.location)
@@ -484,7 +492,6 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
           addCatches(formData, history);
         }}
       >
-        
         <div className="form-group-select">
           <select
             className="form-group-select"
@@ -501,12 +508,13 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
           </select>
         </div>
         {renderSelectedForm(formData.fishtype)}
-        {auth.isAuthenticated && auth.loading === false &&
-         (<Link to="/catch/img">
-         <button type="submit" className="btn btn-primary">
-          Upload Image
-        </button>
-        </Link>)}
+        {auth.isAuthenticated && auth.loading === false && (
+          <Link to="/catch/img">
+            <button type="submit" className="btn btn-primary">
+              Upload Image
+            </button>
+          </Link>
+        )}
 
         <input type="submit" className="btn btn-primary my-1" />
         <Link className="btn btn-light my-1" to={`/profile/${auth.user._id}`}>
@@ -516,7 +524,6 @@ const AddCatch = ({ auth, addCatches, addCoordinates, history, profile: {profile
     </Fragment>
   );
 };
-
 
 AddCatch.propTypes = {
   auth: PropTypes.object.isRequired,
@@ -528,7 +535,11 @@ AddCatch.propTypes = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  profile: state.profile
+  profile: state.profile,
 });
 
-export default connect(mapStateToProps, { addCatches, addCoordinates, getCurrentProfile })(AddCatch)
+export default connect(mapStateToProps, {
+  addCatches,
+  addCoordinates,
+  getCurrentProfile,
+})(AddCatch);
