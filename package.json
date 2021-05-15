@@ -37,6 +37,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-validator": "^6.10.0",
+    "framer-motion": "^4.1.16",
     "gravatar": "^1.8.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
