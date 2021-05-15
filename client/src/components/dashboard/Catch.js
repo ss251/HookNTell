@@ -54,7 +54,6 @@ const Catch = ({ catches, deleteCatch }) => {
 
   return (
     <Fragment>
-      <h2 className="my-2">Catches</h2>
       {/* <table className="table">
         <thead>
           <tr>

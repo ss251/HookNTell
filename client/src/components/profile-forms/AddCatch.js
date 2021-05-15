@@ -8,7 +8,7 @@ import axios from "axios";
 
 const endpoint = "http://localhost:3000/api/s3/upload";
 
-const AddCatch = ({ addCatches, history }) => {
+const AddCatch = ({ auth, addCatches, history }) => {
   const [formData, setFormData] = useState({
     img: "",
     fishtype: "",
@@ -466,7 +466,7 @@ const AddCatch = ({ addCatches, history }) => {
         {renderSelectedForm(formData.fishtype)}
 
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
+        <Link className="btn btn-light my-1" to={`/profile/${auth.user._id}`}>
           Go Back
         </Link>
       </form>
@@ -475,7 +475,12 @@ const AddCatch = ({ addCatches, history }) => {
 };
 
 AddCatch.propTypes = {
+  auth: PropTypes.object.isRequired,
   addCatches: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addCatches })(AddCatch);
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { addCatches })(AddCatch);

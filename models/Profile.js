@@ -5,6 +5,16 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
   },
+  images: {
+    picture: {
+      type: String,
+      default: "",
+    },
+    cover: {
+      type: String,
+      default: "",
+    },
+  },
   location: {
     type: String,
   },

@@ -13,6 +13,7 @@ import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
 
 import "./App.css";
+import Profile from "./components/profile/Profile";
 
 const App = () => {
   useEffect(() => {
@@ -35,6 +36,7 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/profile/:id" component={Profile} />
             <Route component={Routes} />
           </Switch>
         </Fragment>
