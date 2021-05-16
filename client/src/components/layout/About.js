@@ -23,19 +23,20 @@ class about extends Component {
                 <div className="description-info-page">
                   <p>
                     Hook and Tell is a project created through the University of
-                    Wasington's Information School. This idea started because
-                    two of our group members, who are recreational anglers
-                    themselves, noticed how inconvenient it was to report fish
-                    catches. To combat this we have created a digital solution
-                    which emails the state catch information, rather than using
-                    the original process of mailing in a paper catch card. Our
-                    solution provides easy reporting for recreational fishing
-                    and the Fish and Wildlife Department, as well as providing
-                    the under recognized community of fisherfolk a digital
-                    community. Last, and most importantly, with the increase in
-                    data collection on fish will allow for Washington State to
-                    better monitor fish species resulting in saving our fish and
-                    wildlife.
+                    Wasington's Information School. This idea started as two of
+                    our group members, who are recreational anglers themselves,
+                    noticed how inconvenient it was to report fish catches
+                    physically. To combat this we have created a digital
+                    solution which emails the state catch information, rather
+                    than using the original process of mailing in a paper catch
+                    card. Our solution provides convenient reporting for
+                    recreational fishing and the Fish and Wildlife Department,
+                    as well as providing the under recognized community of
+                    fisherfolk a digital community. Last, and most importantly,
+                    the increase in data collection on fish would enable
+                    Washington State to better monitor fish species resulting in
+                    improved conservation efforts and increase awareness in the
+                    recreational fishing community as a whole.
                   </p>
                 </div>
               </Fade>
