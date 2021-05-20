@@ -954,6 +954,7 @@ footer {
   .landing-fisher {
     color: #fff;
     margin: 0%;
+    font-family: "LeagueGothicRegular";
     font-size: 5rem;
     font-weight: 200;
     position: relative;
@@ -986,6 +987,13 @@ footer {
   font-style: normal;
 }
 
+@font-face {
+  font-family: "LeagueGothicRegular";
+  src: url("../src/fonts/LeagueGothic-Regular.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 .landing-fisher {
   color: #fff;
   margin: 0%;
@@ -994,6 +1002,17 @@ footer {
   font-weight: 500;
   position: relative;
   bottom: 55px;
+}
+
+@media (max-width: 405px) {
+  .landing-fisher {
+    color: #fff;
+    margin: 0%;
+    font-family: "LeagueGothicRegular";
+    font-size: 5rem;
+    font-weight: 200;
+    position: relative;
+  }
 }
 
 .signup-landing {
