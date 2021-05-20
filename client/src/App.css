@@ -1,5 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css");
-
+@import url(https://allfont.net/allfont.css?fonts=league-gothic-condensed-regular);
 /* Global Styles */
 :root {
   --primary-color: #0f6a79;
@@ -983,11 +983,11 @@ footer {
 .landing-fisher {
   color: #fff;
   margin: 0%;
-  font-size: 4rem;
-  font-family: sans-serif;
-  font-weight: 800;
+  font-size: 8rem;
+  font-family: "League Gothic Condensed Regular";
+  font-weight: 500;
   position: relative;
-  bottom: 58px;
+  bottom: 55px;
 }
 
 .signup-landing {
