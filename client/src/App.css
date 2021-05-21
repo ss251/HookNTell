@@ -114,15 +114,15 @@ img {
 }
 
 .home1 {
-  width: 15%;
-  height: 60%;
+  width: 1rem;
+  height: 1rem;
   position: relative;
   top: 0.2rem;
 }
 
 .info1 {
-  width: 10%;
-  height: 60%;
+  width: 1rem;
+  height: 1rem;
   position: relative;
   top: 0.2rem;
   max-height: 1rem;
@@ -1004,7 +1004,7 @@ footer {
   bottom: 55px;
 }
 
-@media (max-width: 405px) {
+/* @media (max-width: 405px) {
   .landing-fisher {
     color: #fff;
     margin: 0%;
@@ -1013,7 +1013,7 @@ footer {
     font-weight: 200;
     position: relative;
   }
-}
+} */
 
 .signup-landing {
   position: relative;
