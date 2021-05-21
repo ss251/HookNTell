@@ -29,9 +29,9 @@ const Navbar = ({
       <li>
         <Link to="/map">Map</Link>
       </li>
-      {/* <li>
+      <li>
         <Link to="/posts">Posts</Link>
-      </li> */}
+      </li>
       <li>
         {user ? (
           <Link to={`/profile/${user._id}`}>Profile</Link>

@@ -488,7 +488,7 @@ const AddCatch = ({
             //     console.error(error);
             //   }
             // );
-            //sendEmail(e);
+            sendEmail(e);
             addCatches(formData, history);
           }}
         >
