@@ -1035,7 +1035,7 @@ footer {
 .profile-flex {
   display: flex;
   flex-direction: column;
-  margin-bottom: 14rem;
+  /*margin-bottom: 14rem;*/
 }
 
 .profile-top {
@@ -1055,6 +1055,16 @@ footer {
   width: 200px;
   float: left;
   top: -80px;
+}
+
+@media (max-width: 405px) {
+  .profile-top .round-img {
+    position: relative;
+    margin-left: 7rem;
+    width: 150px;
+    float: left;
+    top: -65px;
+  }
 }
 
 .profile-display {

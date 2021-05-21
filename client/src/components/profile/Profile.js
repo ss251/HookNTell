@@ -16,7 +16,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
     getProfileById(match.params.id);
   }, [getProfileById, match.params.id]);
 
-  const [showCatches, setShowCatches] = React.useState(true);
+  const [showCatches, setShowCatches] = useState(true);
 
   const handleCatches = (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       ) : (
         <Fragment>
           <div className="profile-flex">
-            <Fade triggerOnce duration={2000}>
+            <Fade triggerOnce={true} duration={1000}>
               <ProfileTop
                 profile={profile}
                 edit={auth.isAuthenticated && auth.loading === false}
@@ -109,9 +109,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
       )}
       {(setShowCatches === false && setShowMap === false) ||
       auth.loading === true ||
-      profile === null ? (
-        <Footer style={{ "margin-top": "8rem" }} />
-      ) : (
+      profile === null ? null : (
         <Footer />
       )}
     </Fragment>

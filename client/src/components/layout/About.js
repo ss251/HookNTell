@@ -4,7 +4,7 @@ import lilfish from "../../img/lilfish.png";
 import report from "../../img/report.png";
 import connect from "../../img/connect.png";
 import find from "../../img/find.png";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { Fragment } from "react";
 import { Fade } from "react-awesome-reveal";
 

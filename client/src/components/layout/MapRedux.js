@@ -7,7 +7,7 @@ import MapGL, {
 } from "@urbica/react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import location from "../../img/location.png";
-import { getCurrentProfile } from "../../actions/profile";
+import { getCurrentProfile, getCoordinates } from "../../actions/profile";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import coordinateGen from "../../utils/coordinateGen";
@@ -17,7 +17,11 @@ import { Fade } from "react-awesome-reveal";
 const TOKEN =
   "pk.eyJ1Ijoia3lsZXMzMiIsImEiOiJja25wc2lyZGwwNTIzMzFtdnAzZzl6NjJhIn0.658oMKu-TbFxCBT1ui8mzQ";
 
-const MapRedux = ({ getCurrentProfile, profile: { profile } }) => {
+const MapRedux = ({
+  getCurrentProfile,
+  getCoordinates,
+  profile: { profile },
+}) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);

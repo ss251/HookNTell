@@ -94,12 +94,12 @@ const AddCatch = ({
         );
         setFormData({ ...formData, [lat]: lat1 });
         setFormData({ ...formData, [lng]: lng1 });
-        setFormData({ ...formData, [e.target.name]: e.target.value });
         console.log(lat1);
       };
     } catch (error) {
       console.log("not able to upload coordinates");
     }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const onChange = (e) =>
