@@ -1035,7 +1035,7 @@ footer {
 .profile-flex {
   display: flex;
   flex-direction: column;
-  /*margin-bottom: 14rem;*/
+  margin-bottom: 14rem;
 }
 
 .profile-top {
